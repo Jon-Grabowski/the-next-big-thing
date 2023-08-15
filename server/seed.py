@@ -7,7 +7,8 @@ from random import randint, choice as rc
 from faker import Faker
 
 # Local imports
-from app import app
+from app import app, db
+from user import User
 
 
 
@@ -15,4 +16,11 @@ from app import app
 if __name__ == '__main__':
     fake = Faker()
     with app.app_context():
-        pass
+        print('Clearing database...')
+        User.query.delete()
+        db.session.commit()
+
+
+        users = []
+        for i in range(5):
+            print(i)

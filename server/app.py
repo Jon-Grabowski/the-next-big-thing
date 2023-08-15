@@ -6,6 +6,7 @@
 from flask import request, make_response, session
 from flask_restful import Resource
 import ipdb
+from user import User
 
 # Local imports
 from config import app, db, api
