@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
 import { UserContext } from "./context/user";
+import UserPage from "./components/UserPage";
 
 function App() {
   const {user} = useContext(UserContext)
@@ -15,11 +14,8 @@ function App() {
   return (
     <div className="App">
       <h1>THE NEXT BIG THING, YEA!</h1>
-      <Route path='/signup'>
-        <SignUp />
-      </Route>
-      <Route path='/login'>
-        <Login />
+      <Route path='/user'>
+        <UserPage />
       </Route>
     </div>
   );
