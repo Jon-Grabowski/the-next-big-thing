@@ -24,7 +24,6 @@ yarn-error.log*
 
 *.db
 ../server/instance/
-../server/migrations/
+
 
 /server/instance/
-/server/migrations/

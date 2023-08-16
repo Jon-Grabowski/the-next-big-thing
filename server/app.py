@@ -41,5 +41,24 @@ class Users(Resource):
 
 api.add_resource(Users, '/users')
 
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    try:
+        user = User.query.filter_by(email=data['email']).first()
+        if user.authenticate(data['password']):
+            session['user_id'] = user.id
+            response = make_response(user.to_dict(), 200)
+            return response
+        else:
+            return make_response({'error': 'name or password incorrect'}, 401)
+    except:
+        return make_response({'error': 'name or password incorrect'}, 401)
+    
+@app.route('/logout', methods=['DELETE'])
+def logout():
+    session['user_id'] = None
+    return make_response('', 204)
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

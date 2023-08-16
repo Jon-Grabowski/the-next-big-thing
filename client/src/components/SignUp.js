@@ -2,7 +2,7 @@ import { useFormik, Form } from "formik";
 import * as yup from "yup";
 
 function SignUp(){
-
+    //TODO ERROR HANDLING
 
     const formSchema = yup.object().shape({
         email: yup.string().email(),
@@ -116,7 +116,7 @@ function SignUp(){
                     onChange={formik.handleChange}
                 />
                 <label>Sign up for promo? </label>
-                <input type="submit" value='submit' />
+                <input type="submit" value='Sign Up' />
             </form>
         </div>
     )
