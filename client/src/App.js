@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { UserContext } from "./context/user";
-import UserPage from "./components/UserPage";
+import UserProfile from "./components/UserProfile";
+import SignUpLogIn from "./components/SignupLogIn";
+import Home from "./components/Home";
 
 function App() {
   const {user} = useContext(UserContext)
@@ -13,9 +15,14 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>THE NEXT BIG THING, YEA!</h1>
+      <Route exact path='/'>
+        <Home />
+      </Route>
       <Route path='/user'>
-        <UserPage />
+        <UserProfile />
+      </Route>
+      <Route path='/signup-login'>
+        <SignUpLogIn />
       </Route>
     </div>
   );
