@@ -21,6 +21,8 @@ class User(db.Model, SerializerMixin):
     zip_code = db.Column(db.Integer)
     promo = db.Column(db.Boolean)
 
+    serialize_rules = ('-_password_hash', )
+    
     @property
     def password_hash(self):
         return self._password_hash
