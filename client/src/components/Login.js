@@ -2,11 +2,13 @@ import { useFormik, Form } from "formik";
 import { useContext } from "react";
 import * as yup from "yup";
 import { UserContext } from "../context/user";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login() {
     //TODO ERROR HANDLING
 
     const {setUser} = useContext(UserContext)
+    const history = useHistory()
 
     const formSchema = yup.object().shape({
         email: yup.string().email(),
@@ -29,7 +31,7 @@ function Login() {
             if (resp.ok) {
             resp.json().then((user) => {
                 setUser(user)
-                console.log('logged in')
+                history.push('/')
             });
             } else {
             console.log("didn't work!!");
@@ -37,14 +39,6 @@ function Login() {
             });
         },
     });
-
-    function handleClick() {
-        fetch("/logout", {
-            method: "DELETE",
-            }).then(() => {
-                setUser(null);
-            });
-    }
 
     return (
         <div>
@@ -66,7 +60,6 @@ function Login() {
                 />
                 <input type="submit" value='Log In' />
             </form>
-            <button onClick={handleClick}>Log Out</button>
         </div>
     )
 }
