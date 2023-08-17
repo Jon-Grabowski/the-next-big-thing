@@ -8,10 +8,10 @@ function NavBar() {
 
 
     return(
-        <nav class="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark bg-dark">
             <div className="container-fluid">
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
                 </button>
                 {/* Nav Bar Links */}
                 <div className="collapse navbar-collapse justify-content-start align-center" id="navbarSupportedContent">

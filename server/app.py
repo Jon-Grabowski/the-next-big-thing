@@ -7,10 +7,16 @@ from flask import request, make_response, session
 from flask_restful import Resource
 import ipdb
 from user import User
+from products import Product
 
 # Local imports
 from config import app, db, api
 
+#######################################################
+#
+#           USER VIEWS
+#
+#######################################################
 class Users(Resource):
 
     def post(self):
@@ -59,6 +65,21 @@ def login():
 def logout():
     session['user_id'] = None
     return make_response('', 204)
+
+
+#######################################################
+#
+#           PRODUCT VIEWS
+#
+#######################################################
+
+class Products(Resource):
+    
+    def get(self):
+        products = [p.to_dict() for p in Product.query.all()]
+        return make_response(products, 200)
+    
+api.add_resource(Products, '/products')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
