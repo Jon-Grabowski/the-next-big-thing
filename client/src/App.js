@@ -1,13 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import SignUp from "./components/SignUp";
+import { UserContext } from "./context/user";
+import UserProfile from "./components/UserProfile";
+import SignUpLogIn from "./components/SignupLogIn";
+import Home from "./components/Home";
 
 function App() {
+  const {user} = useContext(UserContext)
+
+  if (user) {
+    console.log(user.first_name)
+  } else {
+    console.log('logged out')
+  }
   return (
     <div className="App">
-      <h1>THE NEXT BIG THING, YEA!</h1>
-      <Route path='/signup'>
-        <SignUp />
+      <Route exact path='/'>
+        <Home />
+      </Route>
+      <Route path='/user'>
+        <UserProfile />
+      </Route>
+      <Route path='/signup-login'>
+        <SignUpLogIn />
       </Route>
     </div>
   );
