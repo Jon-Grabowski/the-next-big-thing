@@ -18,8 +18,8 @@ function NavBarLogOut() {
 
     return (
         <div>
-            <h3>Hello, {user.first_name}!</h3>
-            <button onClick={handleClick}>Log Out</button>
+            <h3 className='text-light'>Hello, {user.first_name}!</h3>
+            <button onClick={handleClick} className='btn btn-secondary'>Log Out</button>
         </div>
     )
 }

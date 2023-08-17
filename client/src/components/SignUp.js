@@ -116,7 +116,7 @@ function SignUp(){
                     onChange={formik.handleChange}
                 />
                 <label>Sign up for promo? </label>
-                <input type="submit" value='Sign Up' />
+                <input className='btn btn-primary px-3' type="submit" value='Sign Up' />
             </form>
         </div>
     )

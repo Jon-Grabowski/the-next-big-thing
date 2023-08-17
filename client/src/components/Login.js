@@ -58,7 +58,7 @@ function Login() {
                     value={formik.values.password}
                     onChange={formik.handleChange}
                 />
-                <input type="submit" value='Log In' />
+                <input className='btn btn-primary px-3' type="submit" value='Log In' />
             </form>
         </div>
     )
