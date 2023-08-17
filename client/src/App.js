@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Shop from './components/Shop'
 import About from "./components/About";
+import Reviews from "./components/Reviews";
 
 function App() {
   const {user} = useContext(UserContext)
@@ -27,6 +28,9 @@ function App() {
       </Route>
       <Route exact path='/about'>
         <About />
+      </Route>
+      <Route exact path='/reviews'>
+        <Reviews />
       </Route>
       <Route path='/user'>
         <UserProfile />
