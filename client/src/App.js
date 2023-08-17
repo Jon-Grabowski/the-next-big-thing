@@ -5,6 +5,8 @@ import UserProfile from "./components/UserProfile";
 import SignUpLogIn from "./components/SignupLogIn";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import Shop from './components/Shop'
+import About from "./components/About";
 
 function App() {
   const {user} = useContext(UserContext)
@@ -19,6 +21,12 @@ function App() {
       <NavBar />
       <Route exact path='/'>
         <Home />
+      </Route>
+      <Route exact path='/shop'>
+        <Shop />
+      </Route>
+      <Route exact path='/about'>
+        <About />
       </Route>
       <Route path='/user'>
         <UserProfile />

@@ -19,6 +19,12 @@ function NavBar() {
                         <li className='nav-item'>
                             <NavLink to='/' className='nav-link'>Home</NavLink>
                         </li>
+                        <li className='nav-item'>
+                            <NavLink to='/shop' className='nav-link'>Shop</NavLink>
+                        </li>
+                        <li className='nav-item'>
+                            <NavLink to='/about' className='nav-link'>About</NavLink>
+                        </li>
                     </ul>
                 </div>
                 <div className = 'navbar-brand'>
