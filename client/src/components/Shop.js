@@ -12,7 +12,7 @@ function Shop({productArray}) {
 
         const cardProducts = productArray.map(product => {
             if (product.id !== featureProduct.id) {
-                return <ProductCard key={product.id} product ={product}/>
+                return <ProductCard key={product.id} product ={product} setFeatureProduct={setFeatureProduct}/>
             }
         })
     
@@ -20,7 +20,7 @@ function Shop({productArray}) {
             <div>
                 <h1>Shop Page</h1>
                 <ProductDetail featureProduct={featureProduct}/>
-                <div>
+                <div className='card-group container-md'>
                     {cardProducts}
                 </div>
             </div>
