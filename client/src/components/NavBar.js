@@ -34,7 +34,7 @@ function NavBar() {
                     <h1 className='display-4 fw-bold'>THE NEXT BIG THING</h1>
                 </div>
                 <div >
-                    {user ? <NavBarLogOut /> : <Link to='/signup-login' className='btn btn-secondary px-3'>SignUp/LogIn</Link>}
+                    {user ? <NavBarLogOut /> : <Link to='/signup-login' className='navbar navbar-toggler p-2 h3 text-light'>SignUp/LogIn</Link>}
                 </div>
             </div>
         </nav>
