@@ -10,15 +10,28 @@ import About from "./components/About";
 import Reviews from "./components/Reviews";
 
 function App() {
-  const {user} = useContext(UserContext)
+  const {user, setUser} = useContext(UserContext)
 
   const [productArray, setProductArray] = useState([])
 
     useEffect(()=>{
-        fetch('/products')
-        .then(r=>r.json())
-        .then(products => setProductArray(products)) 
+      getProducts()
+      fetchUser()
     }, [])
+
+    function fetchUser() {
+      fetch('/authorized').then((resp) => {
+        if (resp.ok) {
+          resp.json().then((user) => setUser(user));
+        }
+      });
+    };
+
+    function getProducts() {
+      fetch('/products')
+      .then(r=>r.json())
+      .then(products => setProductArray(products)) 
+    }
 
   return (
     <div className="App">

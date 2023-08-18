@@ -66,6 +66,17 @@ def logout():
     session['user_id'] = None
     return make_response('', 204)
 
+@app.route('/authorized', methods=['GET'])
+def authorize():
+    try:
+        user = User.query.filter_by(id=session.get('user_id')).first()
+        response = make_response(user.to_dict(), 200)
+        return response
+    except:
+        return make_response({
+            "error": "User not found"
+        }, 404)
+
 
 #######################################################
 #
