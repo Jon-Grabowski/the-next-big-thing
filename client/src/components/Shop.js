@@ -1,28 +1,34 @@
 
 import { useEffect, useState } from 'react'
-// import product_placeholder from '../assets/product_placeholder_og.jpg'
+import ProductCard from './ProductCard'
+import ProductDetail from './ProductDetail'
 
-function Shop() {
+function Shop({productArray}) {
+    const [featureProduct, setFeatureProduct] = useState(null)
 
-    const [productArray, setProductArray] = useState([])
+    if (productArray.length > 0 && featureProduct) {
+        console.log(productArray)
+        console.log(featureProduct)
 
-    useEffect(()=>{
-        fetch('/products')
-        .then(r=>r.json())
-        .then(products => setProductArray(products)) 
-    }, [])
-
-    if (productArray.length > 0){
-        console.log(productArray[0].image)
+        const cardProducts = productArray.map(product => {
+            if (product.id !== featureProduct.id) {
+                return <ProductCard key={product.id} product ={product}/>
+            }
+        })
+    
+        return(
+            <div>
+                <h1>Shop Page</h1>
+                <ProductDetail featureProduct={featureProduct}/>
+                <div>
+                    {cardProducts}
+                </div>
+            </div>
+            
+        )
+    }else if (productArray.length > 0) {
+        setFeatureProduct(productArray[0])
     }
-    
-    
-    return(
-        <div>
-            <h1>Shop Page</h1>
-            {(productArray.length > 0) ? <img src={require('../assets/product_placeholder_og.jpg')}/> : null}
-        </div>
-    )
 }
 
 export default Shop

@@ -31,7 +31,7 @@ function NavBar() {
                     </ul>
                 </div>
                 <div className = 'navbar-brand'>
-                    <h1 className='display-2 fw-bold'>THE NEXT BIG THING</h1>
+                    <h1 className='display-4 fw-bold'>THE NEXT BIG THING</h1>
                 </div>
                 <div >
                     {user ? <NavBarLogOut /> : <Link to='/signup-login' className='btn btn-secondary px-3'>SignUp/LogIn</Link>}
