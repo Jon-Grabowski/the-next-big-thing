@@ -12,11 +12,14 @@ import Reviews from "./components/Reviews";
 function App() {
   const {user} = useContext(UserContext)
 
-  if (user) {
-    console.log(user.first_name)
-  } else {
-    console.log('logged out')
-  }
+  const [productArray, setProductArray] = useState([])
+
+    useEffect(()=>{
+        fetch('/products')
+        .then(r=>r.json())
+        .then(products => setProductArray(products)) 
+    }, [])
+
   return (
     <div className="App">
       <NavBar />
@@ -24,7 +27,7 @@ function App() {
         <Home />
       </Route>
       <Route exact path='/shop'>
-        <Shop />
+        <Shop productArray={productArray}/>
       </Route>
       <Route exact path='/about'>
         <About />
