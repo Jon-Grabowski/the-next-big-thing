@@ -4,41 +4,45 @@ import * as yup from "yup";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function Login() {
+function Login({login}) {
     //TODO ERROR HANDLING
 
-    const {setUser} = useContext(UserContext)
-    const history = useHistory()
+    // const {setUser} = useContext(UserContext)
+    // const history = useHistory()
+
+
+
+    // function login(loginInfo) {
+    //     fetch('/login', {
+    //         method: "POST",
+    //         headers: {
+    //         "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(loginInfo),
+    //     }).then((resp) => {
+    //         if (resp.ok) {
+    //         resp.json().then((user) => {
+    //             setUser(user)
+    //             history.goBack()
+    //         });
+    //         } else {
+    //         console.log("didn't work!!");
+    //         }
+    //         });
+    // }
 
     const formSchema = yup.object().shape({
         email: yup.string().email(),
     });
-
+    
     const formik = useFormik({
         initialValues: {
             email: "",
             password: "",
         },
-    validationSchema: formSchema,
-    onSubmit: (values) => {
-        fetch('/login', {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-        }).then((resp) => {
-            if (resp.ok) {
-            resp.json().then((user) => {
-                setUser(user)
-                history.push('/')
-            });
-            } else {
-            console.log("didn't work!!");
-            }
-            });
-        },
-    });
+        validationSchema: formSchema,
+        onSubmit: (loginInfo) => {login(loginInfo)}
+        });
 
     return (
         <div>

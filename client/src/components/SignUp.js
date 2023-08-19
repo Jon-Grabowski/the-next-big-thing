@@ -1,7 +1,7 @@
 import { useFormik, Form } from "formik";
 import * as yup from "yup";
 
-function SignUp(){
+function SignUp({login}){
     //TODO ERROR HANDLING
 
     const formSchema = yup.object().shape({
@@ -31,9 +31,11 @@ function SignUp(){
             body: JSON.stringify(values),
         }).then((resp) => {
             if (resp.ok) {
-            resp.json().then((user) => {
-                console.log(user)
-            });
+                const loginInfo = {
+                    'email': formik.values.email,
+                    'password': formik.values.password
+                }
+                login(loginInfo)
             } else {
             console.log("handle errors!!");
             }

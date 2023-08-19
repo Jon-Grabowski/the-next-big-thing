@@ -1,11 +1,11 @@
 import Login from "./Login";
 import SignUp from "./SignUp";
 
-function SignUpLogIn(){
+function SignUpLogIn({login}){
     return(
         <div>
-            <SignUp/>
-            <Login/>
+            <SignUp login={login}/>
+            <Login login={login}/>
         </div>
     )
 }
