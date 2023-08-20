@@ -1,9 +1,14 @@
 
-function ProductCard({product}){
+function ProductCard({product, setFeatureProduct}){
+
+    function handleClick(){
+        setFeatureProduct(product)
+    }
+
     if (product != undefined) {
         const {id, name, price, description, image} = product
         return (
-            <div className="card" style={{width: '18rem'}}>
+            <div onClick={handleClick} className="card m-4 product-card">
                 <img src={image} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-text">{name}</h5>

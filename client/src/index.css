@@ -2,3 +2,11 @@
     display: flex;
     justify-content: space-evenly;
 } */
+
+.product-card{
+    max-width: 20rem;
+}
+
+.profile-user-info{
+    font-size: 18px;
+}

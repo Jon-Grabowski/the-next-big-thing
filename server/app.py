@@ -51,7 +51,7 @@ api.add_resource(Users, '/users')
 def login():
     data = request.get_json()
     try:
-        user = User.query.filter_by(email=data['email']).first()
+        user = User.query.filter_by(email=data['email']).first()   
         if user.authenticate(data['password']):
             session['user_id'] = user.id
             response = make_response(user.to_dict(), 200)
@@ -66,7 +66,40 @@ def logout():
     session['user_id'] = None
     return make_response('', 204)
 
+@app.route('/authorized', methods=['GET'])
+def authorize():
+    try:
+        user = User.query.filter_by(id=session.get('user_id')).first()
+        response = make_response(user.to_dict(), 200)
+        return response
+    except:
+        return make_response({
+            "error": "User not found"   
+        }, 404)
 
+class UserByID(Resource):
+
+    def patch(self, id):
+        user = User.query.filter_by(id=id).first()
+        if not user:
+            response = make_response({'error': 'User not found'}, 404)
+            return response
+
+        data = request.get_json()
+        for attr in data: 
+            try:
+                setattr(user, attr, data[attr])
+            except ValueError as e:
+                response = make_response({"errors": [str(e)]})
+                return response
+        
+        db.session.commit()
+
+        user_dict = user.to_dict()
+        response = make_response(user_dict, 202)
+        return response
+
+api.add_resource(UserByID, '/users/<int:id>')
 #######################################################
 #
 #           PRODUCT VIEWS
