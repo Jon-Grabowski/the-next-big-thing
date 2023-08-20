@@ -5,9 +5,11 @@
 # Remote library imports
 from flask import request, make_response, session
 from flask_restful import Resource
+from random import randint
 import ipdb
 from user import User
 from products import Product
+from pre_orders import PreOrder
 
 # Local imports
 from config import app, db, api
@@ -113,6 +115,33 @@ class Products(Resource):
         return make_response(products, 200)
     
 api.add_resource(Products, '/products')
+
+#######################################################
+#
+#           PRE-ORDERS VIEWS
+#
+#######################################################
+
+class PreOrders(Resource):
+
+    def post(self):
+        data = request.json
+        num = randint(80000000, 89999999)
+        try:
+            pre_order = PreOrder(
+                user_id= data['user_id'],
+                product_id = data['product_id'],
+                confirm_num = num
+            )
+        except Exception as e:
+            return make_response({'error': str(e)}, 400)
+        
+        db.session.add(pre_order)
+        db.session.commit()
+
+        return make_response(pre_order.to_dict(), 201)
+
+api.add_resource(PreOrders, '/pre_orders')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
