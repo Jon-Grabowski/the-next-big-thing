@@ -51,7 +51,7 @@ api.add_resource(Users, '/users')
 def login():
     data = request.get_json()
     try:
-        user = User.query.filter_by(email=data['email']).first()
+        user = User.query.filter_by(email=data['email']).first()   
         if user.authenticate(data['password']):
             session['user_id'] = user.id
             response = make_response(user.to_dict(), 200)
@@ -77,7 +77,11 @@ def authorize():
             "error": "User not found"   
         }, 404)
 
+class UserByID(Resource):
+    def patch(self, id):
+        user = User.query.filter_by(id = id).first()
 
+api.add_resource(UserByID, '/user/<int:id>')
 #######################################################
 #
 #           PRODUCT VIEWS

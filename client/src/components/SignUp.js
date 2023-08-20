@@ -21,24 +21,24 @@ function SignUp({login}){
             zip_code: "",
             promo: false
         },
-    validationSchema: formSchema,
-    onSubmit: (values) => {
-        fetch("/users", {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-        }).then((resp) => {
-            if (resp.ok) {
-                const loginInfo = {
-                    'email': formik.values.email,
-                    'password': formik.values.password
+        validationSchema: formSchema,
+        onSubmit: (values) => {
+            fetch("/users", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+                }).then((resp) => {
+                if (resp.ok) {
+                    const loginInfo = {
+                        'email': formik.values.email,
+                        'password': formik.values.password
+                    }
+                    login(loginInfo)
+                } else {
+                console.log("handle errors!!");
                 }
-                login(loginInfo)
-            } else {
-            console.log("handle errors!!");
-            }
             });
         },
     });
