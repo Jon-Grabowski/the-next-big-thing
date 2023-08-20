@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../context/user";
-import { useFormik, Form } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
 
-function ProfileEdit(){
-    const {user} = useContext(UserContext)
+function ProfileEdit({setEdit}){
+    const {user, setUser} = useContext(UserContext)
 
     const formSchema = yup.object().shape({
-        email: yup.string().email(),
+        email: yup.string().email(),  
     });
 
     const formik = useFormik({
@@ -22,7 +22,25 @@ function ProfileEdit(){
             promo: user.promo
         },
         validationSchema: formSchema,
-        onSubmit: (values) => {console.log(values)}
+        onSubmit: (values) => {
+            fetch(`/users/${user.id}`, {
+                method: "PATCH",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+                }).then((resp) => {
+                if (resp.ok) {
+                    resp.json().then((user) => {
+                        setUser(user)
+                        setEdit(false)
+                        // history.goBack()
+                    });
+                } else {
+                console.log("handle errors!!");
+                }
+            });
+        }
     });
 
     return(
@@ -114,6 +132,7 @@ function ProfileEdit(){
                     <input
                     className='form-check-input shadow-sm'
                     type="checkbox"
+                    checked={formik.values.promo}
                     name="promo"
                     value={formik.values.promo}
                     onChange={formik.handleChange}

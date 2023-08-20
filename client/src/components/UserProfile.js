@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../context/user";
-import { useFormik, Form } from "formik";
-import * as yup from "yup";
 import ProfileView from "./ProfileView";
 import ProfileEdit from "./ProfileEdit";
 
@@ -23,7 +21,7 @@ function UserProfile() {
                     className="btn btn-primary border border-info shadow-sm mb-3"
                     onClick={handleClick}
                     >{edit? 'Discard Changes' : 'Edit Profile'}</button>
-                    {edit ? <ProfileEdit /> : <ProfileView />}
+                    {edit ? <ProfileEdit setEdit={setEdit}/> : <ProfileView />}
                 </div>
                 <div className='container-lg my-5'>
                     <p className='h3'>Pre-Orders</p>

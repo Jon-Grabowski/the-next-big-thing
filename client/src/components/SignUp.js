@@ -1,4 +1,4 @@
-import { useFormik, Form } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
 
 function SignUp({login}){
@@ -36,7 +36,7 @@ function SignUp({login}){
                         'password': formik.values.password
                     }
                     login(loginInfo)
-                } else {
+                } else { 
                 console.log("handle errors!!");
                 }
             });
