@@ -9,7 +9,6 @@ function ProductDetail({featureProduct}) {
             'user_id': user.id,
             'product_id': id
         }
-        console.log(data)
         fetch('/pre_orders', {
             method: 'POST',
             headers: {

@@ -15,4 +15,6 @@ class Product(db.Model, SerializerMixin):
     description = db.Column(db.String)
     image = db.Column(db.String)
 
-    
+    orders = db.relationship('PreOrder', back_populates='product', cascade='all, delete-orphan')
+
+    serialize_rules = ('-orders.user', '-orders.product', '-orders.product_id' )

@@ -10,6 +10,7 @@ from faker import Faker
 from app import app, db
 from user import User
 from products import Product
+from pre_orders import PreOrder
 
 
 
@@ -20,6 +21,7 @@ if __name__ == '__main__':
         print('Clearing database...')
         User.query.delete()
         Product.query.delete()
+        PreOrder.query.delete()
         db.session.commit()
 
         print('Seeding Users...')

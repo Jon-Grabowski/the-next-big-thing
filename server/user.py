@@ -21,7 +21,9 @@ class User(db.Model, SerializerMixin):
     zip_code = db.Column(db.Integer)
     promo = db.Column(db.Boolean)
 
-    serialize_rules = ('-_password_hash', )
+    orders = db.relationship('PreOrder', back_populates='user', cascade='all, delete-orphan')
+
+    serialize_rules = ('-_password_hash', '-orders.user', 'orders.product' )
     
     @property
     def password_hash(self):
