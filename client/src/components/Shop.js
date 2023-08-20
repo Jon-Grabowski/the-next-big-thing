@@ -7,8 +7,6 @@ function Shop({productArray}) {
     const [featureProduct, setFeatureProduct] = useState(null)
 
     if (productArray.length > 0 && featureProduct) {
-        console.log(productArray)
-        console.log(featureProduct)
 
         const cardProducts = productArray.map(product => {
             if (product.id !== featureProduct.id) {
