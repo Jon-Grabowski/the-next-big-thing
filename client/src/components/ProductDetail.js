@@ -1,8 +1,10 @@
 import { UserContext } from "../context/user";
 import { useContext } from "react";
-function ProductDetail({featureProduct}) {
+
+function ProductDetail({featureProduct, fetchUser}) {
+
     const {id, name, price, description, image} = featureProduct
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     function handleClick() {
         const data = {
@@ -17,8 +19,8 @@ function ProductDetail({featureProduct}) {
             body: JSON.stringify(data)
         }).then((resp) => {
             if (resp.ok) {
-                resp.json().then((pre_order) => {
-                    console.log(pre_order.confirm_num)
+                resp.json().then(() => {
+                    fetchUser()
                 });
             } else {
                 console.log("handle errors!!");

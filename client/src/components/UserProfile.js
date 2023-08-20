@@ -5,9 +5,10 @@ import ProfileView from "./ProfileView";
 import ProfileEdit from "./ProfileEdit";
 import PreOrderCard from "./PreOrderCard";
 
-function UserProfile() {
+function UserProfile({fetchUser}) {
     const {user} = useContext(UserContext)
     const [edit, setEdit] = useState(false)
+    
 
     function handleClick(){
         setEdit(!edit)
@@ -15,7 +16,11 @@ function UserProfile() {
 
     if(user) {
         const orderCards = user.orders.map((order) => {
-            return <PreOrderCard key={order.id} order={order}/>
+            return <PreOrderCard 
+                key={order.id} 
+                order={order}
+                fetchUser={fetchUser}
+                />
         })
         return(
             <div>
@@ -31,10 +36,12 @@ function UserProfile() {
                     >{edit? 'Discard Changes' : 'Edit Profile'}</button>
                     {edit ? <ProfileEdit setEdit={setEdit}/> : <ProfileView />}
                 </div>
+                {edit? null :
                 <div className='container-lg my-5'>
                     <p className='display-4'>Pre-Orders</p>
                     {orderCards}
                 </div>
+                }
             </div>
 
         )

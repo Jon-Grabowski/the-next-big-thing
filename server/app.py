@@ -143,5 +143,20 @@ class PreOrders(Resource):
 
 api.add_resource(PreOrders, '/pre_orders')
 
+class PreOrdersById(Resource):
+
+    def delete(self, id):
+        try:
+            preorder = PreOrder.query.filter_by(id=id).first()
+        except Exception as e:
+            return make_response({'error': str(e)}, 404)
+        
+        db.session.delete(preorder)
+        db.session.commit()
+
+        return make_response({}, 204)
+    
+api.add_resource(PreOrdersById, '/preorders/<int:id>')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

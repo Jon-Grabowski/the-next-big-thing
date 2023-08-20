@@ -1,7 +1,27 @@
+import { useState } from "react"
 
-function PreOrderCard({order}) {
-    console.log(order)
+function PreOrderCard({order, fetchUser}) {
+
     const {id, confirm_num, product} = order
+    const [deleteTrigger, setDeleteTrigger] = useState(false)
+
+    function handleDelete() {
+        fetch(`/preorders/${id}`, {
+            method: 'DELETE',
+        }).then(r => {
+            if (r.ok) {
+                console.log('DELETED!')
+                fetchUser()
+            } else {
+                console.log('handle errors!')
+            }
+        })
+    }
+
+    function handleClick() {
+        setDeleteTrigger(!deleteTrigger)
+    }
+
     return(
         <div className="card w-75 mb-3">
             <div className='card-body'>
@@ -14,8 +34,16 @@ function PreOrderCard({order}) {
                         <img className="card-img-end preorder-card-img" src={product.image} alt={product.name}/>
                     </div>
                 </div>
-                <p className="card-text h6">Confirmation Number: {confirm_num}</p>
-                
+                <div className='border'>
+                    <p className="card-text h6">Confirmation Number: {confirm_num}</p>
+                    {deleteTrigger ?
+                    <div>
+                        <button className="" onClick={handleClick}>Cancel</button>
+                        <button className="" onClick={handleDelete}>Confirm Delete</button>
+                    </div>
+                    :<button className="" onClick={handleClick}>Delete Pre-Order</button>
+                    }
+                </div>
             </div>
         </div>
     )
