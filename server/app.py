@@ -69,17 +69,19 @@ api.add_resource(UsersByID, '/users/<int:id>')
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
+    email = data['email']
     try:
-        user = User.query.filter_by(email=data['email']).first()   
-    except Exception as e:
-        return make_response({'error': 'email not found'}, 404)
-    
-    if user.authenticate(data['password']):
+        user = User.query.filter_by(email=email).first()
+        if user.authenticate(data['password']):
             session['user_id'] = user.id
             response = make_response(user.to_dict(), 200)
             return response
-    else:
-        return make_response({'error': 'incorrect password'}, 401)
+        else:
+            return make_response({'error': 'incorrect password'}, 401)
+    except Exception as e:
+        return make_response({'error': f'No account associated with {email}'}, 404)
+    
+    
     
 @app.route('/logout', methods=['DELETE'])
 def logout():

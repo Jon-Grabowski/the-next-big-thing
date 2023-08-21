@@ -35,24 +35,6 @@ function App() {
       .then(products => setProductArray(products)) 
     }
 
-    function login(loginInfo) {
-      fetch('/login', {
-          method: "POST",
-          headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginInfo),
-      }).then((resp) => {
-          if (resp.ok) {
-          resp.json().then((user) => {
-              setUser(user)
-              history.goBack()
-          });
-          } else {
-          console.log(resp);
-          }
-          });
-  }
 
   return (
     <div className="App">
@@ -73,7 +55,7 @@ function App() {
         <UserProfile fetchUser={fetchUser}/>
       </Route>
       <Route path='/signup-login'>
-        <SignUpLogIn login={login}/>
+        <SignUpLogIn />
       </Route>
     </div>
   );

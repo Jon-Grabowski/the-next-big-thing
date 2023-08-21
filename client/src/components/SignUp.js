@@ -1,8 +1,13 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { UserContext } from "../context/user";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function SignUp({login}){
+function SignUp(){
     //TODO ERROR HANDLING
+    const {setUser} = useContext(UserContext)
+    const history = useHistory()
 
     const formSchema = yup.object().shape({
         email: yup.string().email(),
@@ -31,13 +36,12 @@ function SignUp({login}){
                 body: JSON.stringify(values),
                 }).then((resp) => {
                 if (resp.ok) {
-                    const loginInfo = {
-                        'email': formik.values.email,
-                        'password': formik.values.password
-                    }
-                    login(loginInfo)
+                    resp.json().then(user => {
+                        setUser(user)
+                        history.goBack()
+                    })
                 } else { 
-                console.log("handle errors!!");
+                resp.json().then(message => console.log(message));
                 }
             });
         },
@@ -102,7 +106,7 @@ function SignUp({login}){
                                         {/* AGE */}
                 <div className="mb-3 row m-0">
                     <label forhtml="age" className="form-label">Age</label>
-                    <div className="col-sm-1">             
+                    <div className="col-sm-2">             
                         <input
                         className="form-control col-sm-3 shadow-sm" 
                         type="text"
@@ -127,7 +131,7 @@ function SignUp({login}){
 
                 <div className="mb-3 row m-0">
                         <label forhtml="city" className="form-label col-sm-3">City</label>
-                        <label forhtml="state" className="form-label col-sm-1">State</label>
+                        <label forhtml="state" className="form-label col-sm-2">State</label>
                         <label forhtml="zip_code" className="form-label col-sm-4">Zip Code</label>
                 </div>
                 <div className="mb-3 row m-0">
@@ -139,7 +143,7 @@ function SignUp({login}){
                         value={formik.values.city}
                         onChange={formik.handleChange}/>
                     </div>
-                    <div className="col-sm-1 m-0">             
+                    <div className="col-sm-2 m-0">             
                         <input
                         className="form-control shadow-sm" 
                         type="text"

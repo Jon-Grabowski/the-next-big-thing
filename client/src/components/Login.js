@@ -4,32 +4,31 @@ import * as yup from "yup";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function Login({login}) {
+function Login() {
     //TODO ERROR HANDLING
 
-    // const {setUser} = useContext(UserContext)
-    // const history = useHistory()
+    const {setUser} = useContext(UserContext)
+    const history = useHistory()
 
+    function login(loginInfo) {
+        fetch('/login', {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(loginInfo),
+        }).then((resp) => {
+            if (resp.ok) {
+            resp.json().then((user) => {
+                setUser(user)
+                history.goBack()
+            });
+            } else {
+            resp.json().then(message => console.log(message['error']));
+            }
+        });
+    }
 
-
-    // function login(loginInfo) {
-    //     fetch('/login', {
-    //         method: "POST",
-    //         headers: {
-    //         "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(loginInfo),
-    //     }).then((resp) => {
-    //         if (resp.ok) {
-    //         resp.json().then((user) => {
-    //             setUser(user)
-    //             history.goBack()
-    //         });
-    //         } else {
-    //         console.log("didn't work!!");
-    //         }
-    //         });
-    // }
 
     const formSchema = yup.object().shape({
         email: yup.string().email(),
