@@ -45,7 +45,9 @@ function ProfileEdit({setEdit}){
 
     return(
         <div className='container-lg'>
-        <form onSubmit={formik.handleSubmit}>                                  {/* EMAIL */}            
+        <form onSubmit={formik.handleSubmit}>                                  
+
+                                                {/* EMAIL */}            
             <div className="mb-3 row m-0">
                 <label forhtml="email" className="form-label">Email address</label>
                 <div className="col-sm-6">             
@@ -112,7 +114,7 @@ function ProfileEdit({setEdit}){
                     <input
                     className="form-control shadow-sm" 
                     type="text"
-                    name="last_name"
+                    name="state"
                     value={formik.values.state}
                     onChange={formik.handleChange}/>
                 </div>
