@@ -44,10 +44,27 @@ class Users(Resource):
         db.session.commit()
 
         session['user.id'] = user.id
-        # ipdb.set_trace()
         return make_response(user.to_dict(), 201)
 
 api.add_resource(Users, '/users')
+
+class UsersByID(Resource):
+
+    def delete(self, id):
+        try:
+            user = User.query.filter_by(id=id).first()
+        except Exception as e:
+            return make_response({'error': str(e)}, 404)
+        
+        db.session.delete(user)
+        db.session.commit()
+        session['user_id'] = None
+
+        return make_response({}, 204)
+    
+api.add_resource(UsersByID, '/users/<int:id>')
+
+
 
 @app.route('/login', methods=['POST'])
 def login():
