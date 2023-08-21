@@ -52,7 +52,7 @@ function Login({login}) {
                                 {/* EMAIL */}
                 <div className="mb-3 row m-0">
                     <label forhtml="email" className="form-label">Email address</label>
-                    <div className="col-sm-4">             
+                    <div className="col-sm-10">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="text"
@@ -65,7 +65,7 @@ function Login({login}) {
                                 {/* PASSWORD */}
                 <div className="mb-3 row m-0">
                     <label forhtml="password" className="form-label">Password</label>
-                    <div className="col-sm-4">             
+                    <div className="col-sm-10">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="password"
@@ -74,8 +74,9 @@ function Login({login}) {
                         onChange={formik.handleChange}/>
                     </div>
                 </div>
-
-                <input className='btn btn-primary px-3' type="submit" value='Log In' />
+                <div className='text-center'>
+                    <input className='btn btn-primary px-3 mb-3' type="submit" value='Log In' />
+                </div>
             </form>
         </div>
     )

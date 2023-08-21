@@ -73,7 +73,7 @@ function App() {
         <UserProfile fetchUser={fetchUser}/>
       </Route>
       <Route path='/signup-login'>
-      <SignUpLogIn login={login}/>
+        <SignUpLogIn login={login}/>
       </Route>
     </div>
   );

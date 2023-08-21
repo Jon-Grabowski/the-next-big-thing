@@ -159,8 +159,8 @@ function SignUp({login}){
 
                                         {/* PROMO */}
                 <div className="mb-3 row m-0">
-                    <label forhtml='submit' className="col-sm-2 my-3">Sign up for promo? </label>
-                    <div className="col-sm-6 my-3">             
+                    
+                    <div className="col-sm-1 my-3">             
                         <input
                         className='form-check-input shadow-sm'
                         type="checkbox"
@@ -170,8 +170,11 @@ function SignUp({login}){
                         onChange={formik.handleChange}
                     />
                     </div>
+                    <label forhtml='submit' className="col-sm-11 my-3">Sign up for promo? </label>
                 </div>
-                <input className='btn btn-primary px-3' type="submit" value='Sign Up' />
+                <div className='text-center'>
+                    <input className='btn btn-primary px-3' type="submit" value='Sign Up' />
+                </div>
             </form>
         </div>
     )
