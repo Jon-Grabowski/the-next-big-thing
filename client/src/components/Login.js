@@ -45,24 +45,38 @@ function Login({login}) {
         });
 
     return (
-        <div>
-            <h1>Log In Page</h1>
+        <div className='border'>
+            <h1>Log In</h1>
             <form onSubmit={formik.handleSubmit}>
-                <label>Email: </label>
-                <input
-                    type="text"
-                    name="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                />
-                <label>Password: </label>
-                <input
-                    type="password"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                />
-                <input className='btn btn-primary px-3' type="submit" value='Log In' />
+
+                                {/* EMAIL */}
+                <div className="mb-3 row m-0">
+                    <label forhtml="email" className="form-label">Email address</label>
+                    <div className="col-sm-10">             
+                        <input
+                        className="form-control col-sm-6 shadow-sm" 
+                        type="text"
+                        name="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}/>
+                    </div>
+                </div>
+
+                                {/* PASSWORD */}
+                <div className="mb-3 row m-0">
+                    <label forhtml="password" className="form-label">Password</label>
+                    <div className="col-sm-10">             
+                        <input
+                        className="form-control col-sm-6 shadow-sm" 
+                        type="password"
+                        name="password"
+                        value={formik.values.password}
+                        onChange={formik.handleChange}/>
+                    </div>
+                </div>
+                <div className='text-center'>
+                    <input className='btn btn-primary px-3 mb-3' type="submit" value='Log In' />
+                </div>
             </form>
         </div>
     )
