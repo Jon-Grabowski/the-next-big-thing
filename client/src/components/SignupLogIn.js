@@ -3,7 +3,7 @@ import SignUp from "./SignUp";
 
 function SignUpLogIn({login}){
     return(
-        <div>
+        <div className='container-lg'>
             <SignUp login={login}/>
             <Login login={login}/>
         </div>

@@ -55,7 +55,7 @@ function SignUp({login}){
                     value={formik.values.email}
                     onChange={formik.handleChange}
                 />
-                <label>Password: </label>
+                <label>Password: </label> 
                 <input
                     type="password"
                     name="password"
