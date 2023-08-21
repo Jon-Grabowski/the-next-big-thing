@@ -167,7 +167,7 @@ function ProfileEdit({setEdit}){
                 </form>
             </div>
             {deleteTrigger ?
-            <div className='bg-danger container-lg d-flex justify-content-end border bg-opacity-25'>
+            <div className='bg-danger container-lg d-flex justify-content-end border bg-opacity-50'>
                 <button className='btn btn-secondary px-3 my-3 mx-2' onClick={trigger}>Cancel</button>
                 <button className='btn btn-danger px-3 my-3' onClick={handleDelete}>Confirm Delete</button>
             </div>

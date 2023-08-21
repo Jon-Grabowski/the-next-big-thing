@@ -49,7 +49,7 @@ function App() {
               history.goBack()
           });
           } else {
-          console.log("didn't work!!");
+          console.log(resp);
           }
           });
   }
