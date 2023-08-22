@@ -43,7 +43,7 @@ class Users(Resource):
         db.session.add(user)
         db.session.commit()
 
-        session['user.id'] = user.id
+        session['user_id'] = user.id
         return make_response(user.to_dict(), 201)
 
 api.add_resource(Users, '/users')

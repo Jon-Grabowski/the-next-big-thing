@@ -1,5 +1,5 @@
 import { useFormik, Form } from "formik";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import * as yup from "yup";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -8,6 +8,7 @@ function Login() {
     //TODO ERROR HANDLING
 
     const {setUser} = useContext(UserContext)
+    const [error, setError] = useState('')
     const history = useHistory()
 
     function login(loginInfo) {
@@ -21,10 +22,11 @@ function Login() {
             if (resp.ok) {
             resp.json().then((user) => {
                 setUser(user)
+                setError('')
                 history.goBack()
             });
             } else {
-            resp.json().then(message => console.log(message['error']));
+            resp.json().then(message => setError(message['error']));
             }
         });
     }
@@ -73,6 +75,7 @@ function Login() {
                         onChange={formik.handleChange}/>
                     </div>
                 </div>
+                {error ? <div>{error}</div> : null}
                 <div className='text-center'>
                     <input className='btn btn-primary px-3 mb-3' type="submit" value='Log In' />
                 </div>

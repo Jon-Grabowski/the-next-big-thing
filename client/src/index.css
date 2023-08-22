@@ -5,6 +5,12 @@
 
 .product-card{
     max-width: 20rem;
+
+}
+
+.product-card:hover{
+    max-width: 20rem;
+    transform: scale(1.1);
 }
 
 .preorder-card-img{
@@ -13,6 +19,10 @@
 .profile-user-info{
     font-size: 18px;
 }
+
+/* .other-products-card:hover {
+    transform: scale(1.2);
+} */
 /* #confirm_delete_user{
     opacity: 0.5;
 } */
