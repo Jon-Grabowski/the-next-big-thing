@@ -2,6 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy.orm import validates
+import ipdb
 
 
 from config import db, bcrypt
@@ -64,8 +65,13 @@ class User(db.Model, SerializerMixin):
         
     @validates('zip_code')
     def validate_zip_code(self, key, zip_code):
-        if isinstance(zip_code, int) and 10000 <= zip_code <= 99999:
-            return zip_code
+        try:
+            code = int(zip_code)
+        except:
+            raise ValueError('Not a valid zip code')
+        
+        if 10000 <= code <= 99999:
+            return code
         else:
             raise ValueError('Not a valid zip code')
 

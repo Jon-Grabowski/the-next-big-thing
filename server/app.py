@@ -44,8 +44,12 @@ class Users(Resource):
             session['user_id'] = user.id
 
         except ValueError as e:
-            response = make_response({"errors": str(e)}, 400)
-            return response
+            if 'int()' in str(e):
+                response = make_response({"errors": 'Invalid zip code'}, 400)
+                return response
+            else:    
+                response = make_response({"errors": str(e)}, 400)
+                return response
         except IntegrityError as i:
             response = make_response({"errors": f'Account for {email} already exists.'}, 400)
             return response
@@ -55,6 +59,26 @@ class Users(Resource):
 api.add_resource(Users, '/users')
 
 class UsersByID(Resource):
+
+    def patch(self, id):
+        user = User.query.filter_by(id=id).first()
+        if not user:
+            response = make_response({'error': 'User not found'}, 404)
+            return response
+
+        data = request.get_json()
+        for attr in data: 
+            try:
+                setattr(user, attr, data[attr])
+            except ValueError as e:
+                response = make_response({"errors": str(e)}, 400)
+                return response
+        
+        db.session.commit()
+
+        user_dict = user.to_dict()
+        response = make_response(user_dict, 202)
+        return response
 
     def delete(self, id):
         try:
@@ -105,29 +129,6 @@ def authorize():
             "error": "User not found"   
         }, 404)
 
-class UserByID(Resource):
-
-    def patch(self, id):
-        user = User.query.filter_by(id=id).first()
-        if not user:
-            response = make_response({'error': 'User not found'}, 404)
-            return response
-
-        data = request.get_json()
-        for attr in data: 
-            try:
-                setattr(user, attr, data[attr])
-            except ValueError as e:
-                response = make_response({"errors": [str(e)]})
-                return response
-        
-        db.session.commit()
-
-        user_dict = user.to_dict()
-        response = make_response(user_dict, 202)
-        return response
-
-api.add_resource(UserByID, '/users/<int:id>')
 #######################################################
 #
 #           PRODUCT VIEWS

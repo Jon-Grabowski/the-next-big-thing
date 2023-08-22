@@ -157,6 +157,7 @@ function SignUp(){
                         required/>
                         {formik.errors.city ? <div>{formik.errors.city}</div> : null}
                     </div>
+                    
                     <div className="col-sm-2 m-0">             
                         <select
                         className="btn dropdown-toggle border shadow-sm" 
