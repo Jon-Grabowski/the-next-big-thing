@@ -20,7 +20,7 @@ function Shop({productArray, fetchUser}) {
     
         return(
             <div>
-                <h1>Shop Page</h1>
+                <h1 className='display-4 p-4'>Place PreOrder</h1>
                 <ProductDetail featureProduct={featureProduct} fetchUser={fetchUser}/>
                 <div className='card-group container-md'>
                     {cardProducts}

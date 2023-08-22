@@ -1,35 +1,36 @@
 import { useFormik, Form } from "formik";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import * as yup from "yup";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function Login({login}) {
+function Login() {
     //TODO ERROR HANDLING
 
-    // const {setUser} = useContext(UserContext)
-    // const history = useHistory()
+    const {setUser} = useContext(UserContext)
+    const [error, setError] = useState('')
+    const history = useHistory()
 
+    function login(loginInfo) {
+        fetch('/login', {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(loginInfo),
+        }).then((resp) => {
+            if (resp.ok) {
+            resp.json().then((user) => {
+                setUser(user)
+                setError('')
+                history.goBack()
+            });
+            } else {
+            resp.json().then(message => setError(message['error']));
+            }
+        });
+    }
 
-
-    // function login(loginInfo) {
-    //     fetch('/login', {
-    //         method: "POST",
-    //         headers: {
-    //         "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(loginInfo),
-    //     }).then((resp) => {
-    //         if (resp.ok) {
-    //         resp.json().then((user) => {
-    //             setUser(user)
-    //             history.goBack()
-    //         });
-    //         } else {
-    //         console.log("didn't work!!");
-    //         }
-    //         });
-    // }
 
     const formSchema = yup.object().shape({
         email: yup.string().email(),
@@ -74,6 +75,7 @@ function Login({login}) {
                         onChange={formik.handleChange}/>
                     </div>
                 </div>
+                {error ? <div>{error}</div> : null}
                 <div className='text-center'>
                     <input className='btn btn-primary px-3 mb-3' type="submit" value='Log In' />
                 </div>

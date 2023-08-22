@@ -34,7 +34,7 @@ function NavBar() {
                     </ul>
                 </div>
                 <div >
-                    {user ? <NavBarLogOut /> : <Link to='/signup-login' className='navbar btn btn-dark'>SignUp/LogIn</Link>}
+                    {user ? <NavBarLogOut /> : <Link to='/signup-login' className='navbar btn btn-dark px-3 border'>SignUp/LogIn</Link>}
                 </div>
             </div>
         </nav>

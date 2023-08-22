@@ -2,6 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy.orm import validates
+import ipdb
 
 
 from config import db, bcrypt
@@ -45,3 +46,32 @@ class User(db.Model, SerializerMixin):
             return new_email
         else:
             raise ValueError("Please enter a valid email address")
+        
+    @validates('street_address')
+    def validate_password(self, key, street_address):
+        has_number = False
+        has_letter = False
+        for letter in street_address:
+            if letter.isnumeric():
+                has_number = True
+            elif isinstance(letter,str):
+                has_letter = True
+        if not has_number:
+            raise ValueError("Please include a house or building number")
+        elif not has_letter:
+            raise ValueError("Address must contain street")
+        else:
+            return street_address
+        
+    @validates('zip_code')
+    def validate_zip_code(self, key, zip_code):
+        try:
+            code = int(zip_code)
+        except:
+            raise ValueError('Not a valid zip code')
+        
+        if 10000 <= code <= 99999:
+            return code
+        else:
+            raise ValueError('Not a valid zip code')
+
