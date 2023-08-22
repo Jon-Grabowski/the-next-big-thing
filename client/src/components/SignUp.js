@@ -1,16 +1,20 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { UserContext } from "../context/user";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignUp(){
     //TODO ERROR HANDLING
     const {setUser} = useContext(UserContext)
     const history = useHistory()
+    const [error, setError] = useState('')
 
     const formSchema = yup.object().shape({
-        email: yup.string().email(),
+        email: yup.string().email('Invaild email'),
+        password: yup.string().min(8),
+        zip_code: yup.string().min(5, 'Invalid zip code').max(5, 'Invalid zip code'),
+        city: yup.string().min(3, "Invalid city")
     });
 
     const formik = useFormik({
@@ -37,16 +41,16 @@ function SignUp(){
                 }).then((resp) => {
                 if (resp.ok) {
                     resp.json().then(user => {
+                        setError('')
                         setUser(user)
                         history.goBack()
                     })
                 } else { 
-                resp.json().then(message => console.log(message));
+                resp.json().then(message => setError(message.errors));
                 }
             });
         },
     });
-
 
     return(
         <div className='container border pb-4'>
@@ -62,7 +66,9 @@ function SignUp(){
                         type="text"
                         name="email"
                         value={formik.values.email}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
+                        {formik.errors.email ? <div>{formik.errors.email}</div> : null}
                     </div>
                 </div>
 
@@ -75,7 +81,9 @@ function SignUp(){
                         type="password"
                         name="password"
                         value={formik.values.password}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
+                        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
                     </div>
                 </div>
 
@@ -91,7 +99,8 @@ function SignUp(){
                         type="text"
                         name="first_name"
                         value={formik.values.first_name}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                     <div className="col-sm-3 m-0">             
                         <input
@@ -99,7 +108,8 @@ function SignUp(){
                         type="text"
                         name="last_name"
                         value={formik.values.last_name}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
@@ -112,7 +122,8 @@ function SignUp(){
                         type="text"
                         name="age"
                         value={formik.values.age}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
@@ -125,7 +136,8 @@ function SignUp(){
                         type="text"
                         name="street_address"
                         value={formik.values.street_address}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
@@ -141,23 +153,81 @@ function SignUp(){
                         type="text"
                         name="city"
                         value={formik.values.city}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
+                        {formik.errors.city ? <div>{formik.errors.city}</div> : null}
                     </div>
                     <div className="col-sm-2 m-0">             
-                        <input
-                        className="form-control shadow-sm" 
-                        type="text"
+                        <select
+                        className="btn dropdown-toggle border shadow-sm" 
+                        // type="text"
                         name="state"
                         value={formik.values.state}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required>
+                            <option value="">--</option>
+                            <option value="AL">AL</option>
+                            <option value="AK">AK</option>
+                            <option value="AZ">AZ</option>
+                            <option value="AR">AR</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="DC">DC</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="IA">IA</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="ME">ME</option>
+                            <option value="MD">MD</option>
+                            <option value="MA">MA</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MS">MS</option>
+                            <option value="MO">MO</option>
+                            <option value="MT">MT</option>
+                            <option value="NE">NE</option>
+                            <option value="NV">NV</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VT">VT</option>
+                            <option value="VA">VA</option>
+                            <option value="WA">WA</option>
+                            <option value="WV">WV</option>
+                            <option value="WI">WI</option>
+                            <option value="WY">WY</option>
+                        </select>
                     </div>
-                    <div className="col-sm-2 m-0">             
+                    <div className="col-sm-3 m-0">             
                         <input
                         className="form-control shadow-sm" 
                         type="text"
                         name="zip_code"
                         value={formik.values.zip_code}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
+                        {formik.errors.zip_code ? <div>{formik.errors.zip_code}</div> : null}
                     </div>
                 </div>
 
@@ -176,6 +246,7 @@ function SignUp(){
                     </div>
                     <label forhtml='submit' className="col-sm-11 my-3">Sign up for promo? </label>
                 </div>
+                {error ? <div>{error}</div> : null}
                 <div className='text-center'>
                     <input className='btn btn-primary px-3' type="submit" value='Sign Up' />
                 </div>

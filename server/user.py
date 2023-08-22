@@ -45,3 +45,27 @@ class User(db.Model, SerializerMixin):
             return new_email
         else:
             raise ValueError("Please enter a valid email address")
+        
+    @validates('street_address')
+    def validate_password(self, key, street_address):
+        has_number = False
+        has_letter = False
+        for letter in street_address:
+            if letter.isnumeric():
+                has_number = True
+            elif isinstance(letter,str):
+                has_letter = True
+        if not has_number:
+            raise ValueError("Please include a house or building number")
+        elif not has_letter:
+            raise ValueError("Address must contain street")
+        else:
+            return street_address
+        
+    @validates('zip_code')
+    def validate_zip_code(self, key, zip_code):
+        if isinstance(zip_code, int) and 10000 <= zip_code <= 99999:
+            return zip_code
+        else:
+            raise ValueError('Not a valid zip code')
+

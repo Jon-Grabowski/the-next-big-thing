@@ -10,6 +10,7 @@ import ipdb
 from user import User
 from products import Product
 from pre_orders import PreOrder
+from sqlalchemy.exc import IntegrityError
 
 # Local imports
 from config import app, db, api
@@ -23,27 +24,32 @@ class Users(Resource):
 
     def post(self):
         data = request.get_json()
+        email = data['email']
         try:
             user = User(
                 email = data['email'],
                 password_hash = data['password'],
-                first_name = data['first_name'],
-                last_name = data['last_name'],
+                first_name = data['first_name'].capitalize(),
+                last_name = data['last_name'].capitalize(),
                 age = int(data['age']),
                 street_address = data['street_address'],
-                city = data['city'],
+                city = data['city'].capitalize(),
                 state = data['state'],
-                zip_code = data['zip_code'],
+                zip_code = int(data['zip_code']),
                 promo = data['promo']
             )
-        except ValueError as e:
-            response = make_response({"errors": [str(e)]}, 400)
-            return response
-        
-        db.session.add(user)
-        db.session.commit()
 
-        session['user_id'] = user.id
+            db.session.add(user)
+            db.session.commit()
+            session['user_id'] = user.id
+
+        except ValueError as e:
+            response = make_response({"errors": str(e)}, 400)
+            return response
+        except IntegrityError as i:
+            response = make_response({"errors": f'Account for {email} already exists.'}, 400)
+            return response
+
         return make_response(user.to_dict(), 201)
 
 api.add_resource(Users, '/users')
@@ -78,7 +84,7 @@ def login():
             return response
         else:
             return make_response({'error': 'incorrect password'}, 401)
-    except Exception as e:
+    except Exception:
         return make_response({'error': f'No account associated with {email}'}, 404)
     
     
