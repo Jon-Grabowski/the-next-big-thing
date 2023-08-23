@@ -8,9 +8,9 @@ function NavBar() {
 
 
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                 <div className = 'navbar-brand ms-4'>
-                    <h1 className='display-5 fw-bold'>THE NEXT BIG THING</h1>
+                    <img id='logo-navbar'src='../assets/thenextbigthing-high-resolution-logo-color-on-transparent-background.png'/>
                 </div>
             <div className="container-fluid">
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
