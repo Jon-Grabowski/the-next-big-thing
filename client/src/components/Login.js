@@ -46,7 +46,7 @@ function Login() {
         });
 
     return (
-        <div className='border'>
+        <div className='border bg-white p-4'>
             <h1>Log In</h1>
             <form onSubmit={formik.handleSubmit}>
 

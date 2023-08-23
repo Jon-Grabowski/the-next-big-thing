@@ -30,7 +30,7 @@ function ProductDetail({featureProduct, fetchUser}) {
     return(
         <div>
             <img src={image}/>
-            {user ? <button className='btn btn-primary mx-3' onClick={handleClick}>Place Pre-Order!</button> : null}
+            {user ? <button className='btn btn-warning border-3 fw-bold mx-3 border-black' onClick={handleClick}>Place Pre-Order!</button> : null}
             <h1>{name}</h1>
             <h4>{price}</h4>
             <p>{description}</p>           
