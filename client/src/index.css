@@ -7,6 +7,10 @@ body {
     background-size: cover;
 }
 
+.feature-product-card{
+    max-width: 100rem;
+}
+
 .product-card{
     max-width: 20rem;
 
