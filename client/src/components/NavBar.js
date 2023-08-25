@@ -9,7 +9,7 @@ function NavBar() {
 
     return(
         <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark p-0">
-            <Link to='/' class="navbar-brand m-0">
+            <Link to='/' className="navbar-brand m-0">
                 <img id='logo-navbar'src='../assets/thenextbigthing-high-resolution-logo-color-on-transparent-background-cropped-icon.png' className='ms-4 m-0' height='50'/>
             </Link>
             <div className="ms-4 ps-0 container-fluid">
