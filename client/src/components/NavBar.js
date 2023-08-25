@@ -12,7 +12,7 @@ function NavBar() {
             <Link to='/' class="navbar-brand m-0">
                 <img id='logo-navbar'src='../assets/thenextbigthing-high-resolution-logo-color-on-transparent-background-cropped-icon.png' className='ms-4 m-0' height='50'/>
             </Link>
-            <div className="ms-0 ps-0 container-fluid">
+            <div className="ms-4 ps-0 container-fluid">
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

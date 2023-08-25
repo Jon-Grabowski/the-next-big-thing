@@ -10,17 +10,18 @@ function Home(){
                 className='w-25'
                 />
             </div>
-            <div className='container-fluid my-3 w-75 pt-5'>
+            <div className='container-fluid my-3 w-100 pt-5'>
                 <div className='d-flex row justify-content-evenly justify-items-center align-items-center mt-5'>
-                    <div className='col-5 m-3'>
+                    <div className='col-6 m-3'>
                         <img 
-                        src='../assets/product-transparant.png'
+                        // src='../assets/product-transparant.png'
+                        src='../assets/nbt-display-og.jpg'
                         alt='the-next-big-thing-logo'
                         className='w-100'
                         />
                     </div>
-                    <div className='col-1 m-1'></div>
-                    <div className='col-5 bg-black border border-white border-3 rounded bg-opacity-25 border-end-0 border-start-0 m-3 p-3'>
+                    {/* <div className='col-1 m-1'></div> */}
+                    <div className='col-6 bg-black border border-white border-3 rounded bg-opacity-25 border-end-0 border-start-0 m-3 p-3'>
                         <h5 className='text-light my-3 mb-5'>Introducing...    <span className='display-6 fst-italic fw-semibold'>theNextBigThing</span></h5>
                         <p className='text-light lead fst-italic my-3 text-center'>A true marvel that is set to reshape the way we experience the world. Prepare to embark on a journey into the future of technology, where innovation knows no bounds.</p>
                         <p className='text-light fs-5 my-3 text-center'>Imagine a world where limits are shattered and new horizons are unveiled. With theNextBigThing, you're not just witnessing progress - you're becoming a part of it. This extraordinary product embodies the culmination of relentless research, ingenious engineering, and visionary design.
