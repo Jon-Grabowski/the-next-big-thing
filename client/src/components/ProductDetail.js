@@ -70,7 +70,7 @@ function ProductDetail({featureProduct, fetchUser}) {
                 </div>
             </div>
             <div className="modal fade" id="confirm-preorder-modal" tabIndex="-1" aria-labelledby="confirm-preorder-modalLabel" aria-hidden="true">
-                <div className="modal-dialog">
+                <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="exampleModalLabel">PreOrder Placed!</h1>
@@ -79,6 +79,19 @@ function ProductDetail({featureProduct, fetchUser}) {
                         <div className="modal-body">
                             <h3>{name}</h3>
                             {confirmNum ? <p>{confirmNum}</p> : null}
+                            <div className="card w-75 mb-3">
+                                <div className='card-body'>
+                                    <div className="row g-0 border">
+                                        <div className="col-md-9">
+                                            <p className="card-title h3">{name}</p>
+                                            <p className="card-text h6">{price}</p>
+                                        </div>
+                                        <div className="col-md-3">
+                                            <img className="card-img-end preorder-card-img" src={image} alt={name}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>

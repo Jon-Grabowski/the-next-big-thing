@@ -25,9 +25,9 @@ function UserProfile({fetchUser}) {
         return(
             <div>
                 {edit ? 
-                <p className='container-lg display-4 mb-3'>Edit Account Information</p>
-                :<p className='container-lg display-4 mb-3'>Account Information</p>}
-                <div className='container-lg mb-5 border p-3'>
+                <p className='container-lg display-4 mb-3 border-bottom border-black border-2'>Edit Account Information</p>
+                :<p className='container-lg display-4 mb-3 border-bottom border-black border-2'>Account Information</p>}
+                <div className='container-lg mb-5 bg-black bg-opacity-50 border-top border-bottom border-3 rounded p-3 w-50'>
                     
                     <button 
                     type="btn" 
@@ -38,7 +38,7 @@ function UserProfile({fetchUser}) {
                 </div>
                 {edit? null :
                 <div className='container-lg my-5'>
-                    <p className='display-4'>Pre-Orders</p>
+                    <p className='display-4 border-bottom border-black border-2'>Pre-Orders</p>
                     {orderCards}
                 </div>
                 }
