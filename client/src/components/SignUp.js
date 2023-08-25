@@ -4,11 +4,15 @@ import { UserContext } from "../context/user";
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function SignUp(){
+function SignUp({formTrigger, setFormTrigger}){
     //TODO ERROR HANDLING
     const {setUser} = useContext(UserContext)
     const history = useHistory()
     const [error, setError] = useState('')
+
+    function handleClick() {
+        setFormTrigger(!formTrigger)
+    }
 
     const formSchema = yup.object().shape({
         email: yup.string().email('Invaild email'),
@@ -53,16 +57,16 @@ function SignUp(){
     });
 
     return(
-        <div className='container border pb-4'>
-            <h1>Create An Account</h1>
+        <div className='container-lg bg-dark bg-opacity-50 text-light shadow p-3 rounded border border-4 border-white border-end-0 border-start-0'>
+            <h1 className='display-5 text-center mb-4'>Create An Account</h1>
             <form onSubmit={formik.handleSubmit}>
 
                                         {/* EMAIL */}
-                <div className="mb-3 row m-0">
-                    <label forhtml="email" className="form-label">Email address</label>
-                    <div className="col-sm-4">             
+                <div className="mb-3 row m-0 p-0">
+                    <label forhtml="email" className="form-label m-0 fs-5">Email address</label>
+                    <div className="col-sm-7">             
                         <input
-                        className="form-control col-sm-6 shadow-sm" 
+                        className="form-control col-sm-6 shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="email"
                         value={formik.values.email}
@@ -74,10 +78,10 @@ function SignUp(){
 
                                         {/* PASSWORD */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="password" className="form-label">Password</label>
-                    <div className="col-sm-4">             
+                    <label forhtml="password" className="form-label m-0 fs-5">Password</label>
+                    <div className="col-sm-7">             
                         <input
-                        className="form-control col-sm-6 shadow-sm" 
+                        className="form-control col-sm-6 shadow-sm border border-2 border-secondary" 
                         type="password"
                         name="password"
                         value={formik.values.password}
@@ -88,23 +92,23 @@ function SignUp(){
                 </div>
 
                                         {/* NAME */}
-                <div className="mb-3 row m-0">
-                    <label forhtml="first_name" className="form-label col-sm-3">First Name</label>
-                    <label forhtml="last_name" className="form-label col-sm-6">Last Name</label>
+                <div className="row m-0">
+                    <label forhtml="first_name" className="form-label col-sm-6 m-0 fs-5">First Name</label>
+                    <label forhtml="last_name" className="form-label col-sm-6 m-0 fs-5">Last Name</label>
                 </div>
                 <div className="mb-3 row m-0">
-                    <div className="col-sm-3 m-0">             
+                    <div className="col-sm-6 m-0">             
                         <input
-                        className="form-control shadow-sm" 
+                        className="form-control shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="first_name"
                         value={formik.values.first_name}
                         onChange={formik.handleChange}
                         required/>
                     </div>
-                    <div className="col-sm-3 m-0">             
+                    <div className="col-sm-6 m-0">             
                         <input
-                        className="form-control shadow-sm" 
+                        className="form-control shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="last_name"
                         value={formik.values.last_name}
@@ -115,10 +119,10 @@ function SignUp(){
 
                                         {/* AGE */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="age" className="form-label">Age</label>
+                    <label forhtml="age" className="form-label m-0 fs-5">Age</label>
                     <div className="col-sm-2">             
                         <input
-                        className="form-control col-sm-3 shadow-sm" 
+                        className="form-control col-sm-3 shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="age"
                         value={formik.values.age}
@@ -129,10 +133,10 @@ function SignUp(){
 
                                         {/* ADDRESS */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="street_address" className="form-label">Street Address</label>
-                    <div className="col-sm-6">             
+                    <label forhtml="street_address" className="form-label m-0 fs-5">Street Address</label>
+                    <div className="col-sm-7">             
                         <input
-                        className="form-control shadow-sm" 
+                        className="form-control shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="street_address"
                         value={formik.values.street_address}
@@ -141,15 +145,15 @@ function SignUp(){
                     </div>
                 </div>
 
-                <div className="mb-3 row m-0">
-                        <label forhtml="city" className="form-label col-sm-3">City</label>
-                        <label forhtml="state" className="form-label col-sm-2">State</label>
-                        <label forhtml="zip_code" className="form-label col-sm-4">Zip Code</label>
+                <div className="row m-0">
+                        <label forhtml="city" className="form-label col-sm-3 m-0 fs-5">City</label>
+                        <label forhtml="state" className="form-label col-sm-2 m-0 fs-5">State</label>
+                        <label forhtml="zip_code" className="form-label col-sm-4 m-0 fs-5">Zip Code</label>
                 </div>
-                <div className="mb-3 row m-0">
+                <div className="row m-0">
                     <div className="col-sm-3 m-0">             
                         <input
-                        className="form-control shadow-sm" 
+                        className="form-control shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="city"
                         value={formik.values.city}
@@ -160,7 +164,7 @@ function SignUp(){
                     
                     <div className="col-sm-2 m-0">             
                         <select
-                        className="btn dropdown-toggle border shadow-sm" 
+                        className="btn dropdown-toggle border shadow-sm bg-white border border-2 border-secondary" 
                         // type="text"
                         name="state"
                         value={formik.values.state}
@@ -222,7 +226,7 @@ function SignUp(){
                     </div>
                     <div className="col-sm-3 m-0">             
                         <input
-                        className="form-control shadow-sm" 
+                        className="form-control shadow-sm border border-2 border-secondary" 
                         type="text"
                         name="zip_code"
                         value={formik.values.zip_code}
@@ -235,9 +239,9 @@ function SignUp(){
                                         {/* PROMO */}
                 <div className="mb-3 row m-0">
                     
-                    <div className="col-sm-1 my-3">             
+                    <div className="col-sm-1 my-3 text-center">             
                         <input
-                        className='form-check-input shadow-sm'
+                        className='form-check-input shadow-sm border border-2 border-secondary align-middle btn btn-lg'
                         type="checkbox"
                         checked={formik.values.promo}
                         name="promo"
@@ -245,11 +249,15 @@ function SignUp(){
                         onChange={formik.handleChange}
                     />
                     </div>
-                    <label forhtml='submit' className="col-sm-11 my-3">Sign up for promo? </label>
+                    <label forhtml='submit' className="col-sm-11 my-3 fs-5">Sign up for promo? </label>
                 </div>
                 {error ? <div>{error}</div> : null}
                 <div className='text-center'>
-                    <input className='btn btn-primary px-3' type="submit" value='Sign Up' />
+                    <input className='btn btn-success px-3 mb-4' type="submit" value='Sign Up' />
+                </div>
+                <div className='text-center border-top pt-4'>
+                    <p className='fs-5 mb-2'>Already have an account? </p>
+                    <button onClick={handleClick} className='btn btn-primary'>Log In</button>
                 </div>
             </form>
         </div>

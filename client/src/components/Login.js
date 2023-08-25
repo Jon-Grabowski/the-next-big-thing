@@ -3,13 +3,18 @@ import { useContext, useState } from "react";
 import * as yup from "yup";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom/cjs/react-router-dom.min"
 
-function Login() {
+function Login({formTrigger, setFormTrigger}) {
     //TODO ERROR HANDLING
 
     const {setUser} = useContext(UserContext)
     const [error, setError] = useState('')
     const history = useHistory()
+
+    function handleClick() {
+        setFormTrigger(!formTrigger)
+    }
 
     function login(loginInfo) {
         fetch('/login', {
@@ -46,14 +51,14 @@ function Login() {
         });
 
     return (
-        <div className='border'>
-            <h1>Log In</h1>
+        <div className='container-lg bg-dark bg-opacity-50 text-light shadow p-4 rounded border border-4 border-white border-end-0 border-start-0'>
+            <h1 className='display-5 text-center mb-4'>Log In</h1>
             <form onSubmit={formik.handleSubmit}>
 
                                 {/* EMAIL */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="email" className="form-label">Email address</label>
-                    <div className="col-sm-10">             
+                    <label forhtml="email" className="form-label fs-4">Email address</label>
+                    <div className="col">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="text"
@@ -64,9 +69,9 @@ function Login() {
                 </div>
 
                                 {/* PASSWORD */}
-                <div className="mb-3 row m-0">
-                    <label forhtml="password" className="form-label">Password</label>
-                    <div className="col-sm-10">             
+                <div className="mb-4 row m-0">
+                    <label forhtml="password" className="form-label fs-4">Password</label>
+                    <div className="col">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="password"
@@ -76,8 +81,12 @@ function Login() {
                     </div>
                 </div>
                 {error ? <div>{error}</div> : null}
-                <div className='text-center'>
-                    <input className='btn btn-primary px-3 mb-3' type="submit" value='Log In' />
+                <div className='text-center mb-4'>
+                    <input className='btn btn-success px-3 mb-3' type="submit" value='Log In' />
+                </div>
+                <div className='text-center border-top pt-4'>
+                    <p className='fs-5 mb-1'>Don't have an account? </p>
+                    <button onClick={handleClick} className='btn btn-primary'>Create one Now</button>
                 </div>
             </form>
         </div>
