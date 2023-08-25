@@ -1,12 +1,20 @@
 import { UserContext } from "../context/user";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProductDetail({featureProduct, fetchUser}) {
 
     const {id, name, price, description, image} = featureProduct
     const {user, setUser} = useContext(UserContext)
+    const [confirmNum, setConfirmNum] = useState(null)
     const imgPath = ``
+    const history = useHistory()
+
+
+    function handleModalClick() {
+        history.push('/user')
+    }
 
     function handleClick() {
             const data = {
@@ -21,7 +29,9 @@ function ProductDetail({featureProduct, fetchUser}) {
                 body: JSON.stringify(data)
             }).then((resp) => {
                 if (resp.ok) {
-                    resp.json().then(() => {
+                    resp.json().then((order) => {
+                        setConfirmNum(order.confirm_num)
+                        console.log(order.confirm_num)
                         fetchUser()
                     });
                 } else {
@@ -49,8 +59,30 @@ function ProductDetail({featureProduct, fetchUser}) {
                             <p className='card-subtitle text-body-secondary fs-4'>${price}</p>
                             <p className="card-text">{description}</p>
                             {user ? 
-                            <button className='btn btn-warning border-3 fw-bold mx-3 border-black' onClick={handleClick}>Place Pre-Order!</button> 
+                            <button 
+                                className='btn btn-warning border-3 fw-bold mx-3 border-black' 
+                                onClick={handleClick}
+                                data-bs-toggle="modal" data-bs-target="#confirm-preorder-modal">
+                                Place Pre-Order!</button> 
                             : <Link className='btn btn-secondary border-2 fw-bold mx-3 border-black' to='/signup-login'>Log In to PreOrder</Link> }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade" id="confirm-preorder-modal" tabIndex="-1" aria-labelledby="confirm-preorder-modalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">PreOrder Placed!</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <h3>{name}</h3>
+                            {confirmNum ? <p>{confirmNum}</p> : null}
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                            <button onClick={handleModalClick} type="button" className="btn btn-primary" data-bs-dismiss="modal">View Your PreOrders</button>
                         </div>
                     </div>
                 </div>
