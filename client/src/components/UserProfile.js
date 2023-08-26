@@ -31,7 +31,7 @@ function UserProfile({fetchUser}) {
                     
                     <button 
                     type="btn" 
-                    className="btn btn-primary border border-info shadow-sm mb-3"
+                    className="btn btn-secondary border border-info shadow-sm mb-3"
                     onClick={handleClick}
                     >{edit? 'Discard Changes' : 'Edit Profile'}</button>
                     {edit ? <ProfileEdit setEdit={setEdit}/> : <ProfileView />}

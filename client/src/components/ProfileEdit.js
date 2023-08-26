@@ -69,11 +69,11 @@ function ProfileEdit({setEdit}){
 
     return(
         <div>
-            <div className='container-lg border p-3'>
+            <div className='container-lg text-light p-3'>
                 <form onSubmit={formik.handleSubmit}>                                  
 
                                                         {/* EMAIL */}            
-                    <div className="mb-3 row m-0">
+                    <div className="mb-3 row m-0 lead">
                         <label forhtml="email" className="form-label">Email address</label>
                         <div className="col-sm-6">             
                             <input
@@ -88,7 +88,7 @@ function ProfileEdit({setEdit}){
                     </div>
 
                                                     {/* NAME */}
-                    <div className="mb-3 row m-0">
+                    <div className="mb-0 row m-0 lead">
                             <label forhtml="first_name" className="form-label col-sm-4">First Name</label>
                             <label forhtml="last_name" className="form-label col-sm-6">Last Name</label>
                     </div>
@@ -114,7 +114,7 @@ function ProfileEdit({setEdit}){
                     </div>
 
                                                     {/* ADDRESS */}
-                    <div className="mb-3 row m-0">
+                    <div className="mb-3 row m-0 lead">
                         <label forhtml="street_address" className="form-label">Street Address</label>
                         <div className="col-sm-6">             
                             <input
@@ -127,13 +127,13 @@ function ProfileEdit({setEdit}){
                         </div>
                     </div>
 
-                    <div className="mb-3 row m-0">
-                            <label forhtml="city" className="form-label col-sm-3">City</label>
-                            <label forhtml="state" className="form-label col-sm-1">State</label>
-                            <label forhtml="zip_code" className="form-label col-sm-4">Zip Code</label>
+                    <div className="row m-0 lead">
+                            <label forhtml="city" className="form-label col-3">City</label>
+                            <label forhtml="state" className="form-label col-2">State</label>
+                            <label forhtml="zip_code" className="form-label col-7">Zip Code</label>
                     </div>
                     <div className="mb-3 row m-0">
-                        <div className="col-sm-3 m-0">             
+                        <div className="col-3 m-0">             
                             <input
                             className="form-control shadow-sm" 
                             type="text"
@@ -143,9 +143,9 @@ function ProfileEdit({setEdit}){
                             required/>
                             {formik.errors.city ? <div>{formik.errors.city}</div> : null}
                         </div>
-                        <div className="col-sm-1 m-0">             
+                        <div className="col-2 m-0">             
                             <select
-                            className="btn dropdown-toggle border shadow-sm" 
+                            className="btn dropdown-toggle border shadow-sm text-dark bg-white" 
                             // type="text"
                             name="state"
                             value={formik.values.state}
@@ -218,7 +218,7 @@ function ProfileEdit({setEdit}){
                     </div>
 
                     <div className="mb-3 row m-0">
-                    <label forhtml='submit' className="col-sm-2 my-3">Sign up for promo? </label>
+                    <label forhtml='submit' className="col-md-3 my-3">Sign up for promo? </label>
                         <div className="col-sm-6 my-3">             
                             <input
                             className='form-check-input shadow-sm'
@@ -235,12 +235,13 @@ function ProfileEdit({setEdit}){
                 </form>
             </div>
             {deleteTrigger ?
-            <div className='bg-danger container-lg d-flex justify-content-end border bg-opacity-50'>
+            <div className='bg-danger container-lg d-flex justify-content-end bg-opacity-50 align-items-center border-top border-bottom'>
+                <p className='text-light fs-5 me-4'><strong>Are you sure you want to delete your account?</strong></p>
                 <button className='btn btn-secondary px-3 my-3 mx-2' onClick={trigger}>Cancel</button>
                 <button className='btn btn-danger px-3 my-3' onClick={handleDelete}>Confirm Delete</button>
             </div>
             :
-            <div className='container-lg d-flex justify-content-end border'>
+            <div className='container-lg d-flex justify-content-end align-items-center border-top border-bottom'>
                 <button className='btn btn-danger px-3 m-3' onClick={trigger}>Delete Account</button>
             </div>
             }

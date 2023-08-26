@@ -7,7 +7,7 @@ function SignUpLogIn(){
 
     return(
         <div className=''>
-            <div className='d-flex flex-row align-items-center justify-content-center border'>
+            <div className='d-flex flex-row align-items-center justify-content-center'>
                 {formTrigger? 
                 <div className='p-4'>
                     <SignUp formTrigger={formTrigger} setFormTrigger={setFormTrigger}/>

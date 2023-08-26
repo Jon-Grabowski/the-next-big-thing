@@ -164,7 +164,7 @@ function SignUp({formTrigger, setFormTrigger}){
                     
                     <div className="col-sm-2 m-0">             
                         <select
-                        className="btn dropdown-toggle border shadow-sm bg-white border border-2 border-secondary" 
+                        className="btn dropdown-toggle border shadow-sm bg-white border border-2 border-secondary text-dark" 
                         // type="text"
                         name="state"
                         value={formik.values.state}
