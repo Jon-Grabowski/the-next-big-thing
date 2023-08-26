@@ -8,37 +8,37 @@ function ProfileView(){
     const name = `${user.first_name} ${user.last_name}`
 
     return(
-        <div>
-            <div className="mb-3 row m-0">
-                <div className="col-sm-1">  
+        <div className='text-light fs-5 w-100'>
+            <div className="mb-3 row m-0 border-bottom">
+                <div className="col-md-2 lead">  
                     <label forhtml="exampleFormControlInput1" className="form-label">Email: </label>
                 </div>
-                <div className="col-sm-6">
-                    <h6>{user.email}</h6>
+                <div className="col-md-6 text-start">
+                    <p>{user.email}</p>
                 </div>
             </div>
-            <div className="mb-3 row m-0">
-                <div className="col-sm-1">  
+            <div className="mb-3 row m-0 border-bottom">
+                <div className="col-md-2 lead">  
                     <label forhtml="exampleFormControlInput1" className="form-label">Name: </label>
                 </div>
-                <div className="col-sm-6">
-                    <h6>{name}</h6>
+                <div className="col-md-6">
+                    <p>{name}</p>
                 </div>
             </div>
-            <div className="mb-3 row m-0">
-                <div className="col-sm-1">  
+            <div className="mb-3 row m-0 border-bottom">
+                <div className="col-lg-2 lead">  
                     <label forhtml="exampleFormControlInput1" className="form-label">Address: </label>
                 </div>
-                <div className="col-sm-6">
-                    <h6>{address}</h6>
+                <div className="col-lg-10">
+                    <p>{address}</p>
                 </div>
             </div>
             <div className="mb-3 row m-0">
-                <div className="col-sm-1">  
+                <div className="col-lg-2 lead">  
                     <label forhtml="exampleFormControlInput1" className="form-label">Promo: </label>
                 </div>
-                <div className="col-sm-6">
-                    {user.promo ? <h6>Yes, send me promotional material</h6> : <h6>No, don't send me promotional material</h6>}
+                <div className="col-lg-10">
+                    {user.promo ? <p>Yes, send me promotional material</p> : <p>No, don't send me promotional material</p>}
                 </div>
             </div>
             {/* ORDERS SECTION */}
