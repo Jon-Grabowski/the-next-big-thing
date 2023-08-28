@@ -2,6 +2,15 @@
 function About() {
     return(
         <div>
+            <div className='d-flex container-fluid bg-black justify-content-center mb-4'>
+                <img 
+                    src='../assets/thenextbigthing-high-resolution-logo-color-on-transparent-background-cropped.png' 
+                    alt='logo'
+                    className='bg-black py-2'
+                    style={{'maxWidth': '40rem'}}
+                    
+                />
+            </div>
             <div className='container-lg text-light'>
                 <div className='d-flex align-items-end border-bottom mb-4'>
                     <p className='display-4'>Maximillian Veritas</p>

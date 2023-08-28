@@ -51,9 +51,13 @@ if __name__ == '__main__':
         db.session.add_all(products)
 
         print('Seeding Reviews...')
-        r1 = Review(name='Dr.Dre', title='producer/rapper', body="theNextBigThing is a symphony of innovation that harmonizes seamlessly with our evolving world. It's a melody of untapped possibilities that will undoubtedly set the tone for the future of technology.", image='https://pyxis.nymag.com/v1/imgs/d78/db3/e1663ff2983e9b999de28e63e35c7ae4db-29-dr-dre.rsquare.w330.jpg')
-        r2 = Review(name='Brad Pitt', title='A-list Actor', body="As an actor, I'm drawn to stories that push boundaries, and theNextBigThing is no different. This product is a masterpiece of technology that empowers users to embrace their roles as pioneers of the digital age.", image='https://pyxis.nymag.com/v1/imgs/70a/8bf/035e2a45436f3c1ee8bb609b2beabfd93c-9-brad-pitt.rsquare.w700.jpg')
-        reviews = [r1, r2]
+        r1 = Review(name='Mugatu', title='fashion mogul', body="Just as fashion pushes the envelope of self-expression, theNextBigThing redefines the boundaries of innovation. It's a creation that elegantly weaves together style and substance, leaving an indelible mark on the landscape of possibility. theNextBigThing... so hot right now!", image='https://media.licdn.com/dms/image/C4E03AQFnoz4RtSTP1w/profile-displayphoto-shrink_800_800/0/1642896961590?e=2147483647&v=beta&t=cveqL6Un2XzwXTCQMLlvgG68WEx3YeE1Ac6UPOyqJ1I')
+        r2 = Review(name='Erlich Bachman', title='co-founder of Bachmanity', body="I've seen the evolution of tech, and theNextBigThing is a meteoric leap into the future. Its enigmatic features are like portals to another dimension of connectivity and exploration - a true game changer in the tech world.", image='https://hips.hearstapps.com/esq.h-cdn.co/assets/16/24/640x480/sd-aspect-1465822353-silicon-valley-recap-season-3-episode-8-bachmans-earning-over-ride.jpg?resize=1200:*')
+        r3 = Review(name='Michael G. Scott', title='author, "Somehow I Manage', body="Just as words craft worlds in literature, theNextBigThing crafts possibilities in the realm of technology. It's a narrative of progress that leaves users spellbound, turning each interaction into a chapter of discovery.", image='https://assetsio.reedpopcdn.com/Michael-Scott-in-Mass-Effect.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp')
+        r4 = Review(name='Tony Perkis, Jr.', title='fitness entrepreneur', body="In the world of wellness, theNextBigThing is the ultimate workout for your mind and imagination. It's like a personal trainer that guides you through the realms of unexplored potential, transforming aspirations into tangible achievements.", image='https://arc-anglerfish-arc2-prod-gmg.s3.amazonaws.com/public/CU6GEE2T7JEQZBYR57JHXZZYVU.jpg')
+        r5 = Review(name='Beethoven', title='composer', body="theNextBigThing is a symphony of innovation that harmonizes seamlessly with our evolving world. It's a melody of untapped possibilities that will undoubtedly set the tone for the future of technology.", image='https://hips.hearstapps.com/hmg-prod/images/beethoven-600x600.jpg')
+
+        reviews = [r1, r2, r3, r4, r5]
         db.session.add_all(reviews)
         
         db.session.commit()
