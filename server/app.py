@@ -10,6 +10,7 @@ import ipdb
 from user import User
 from products import Product
 from pre_orders import PreOrder
+from reviews import Review
 from sqlalchemy.exc import IntegrityError
 
 # Local imports
@@ -184,6 +185,19 @@ class PreOrdersById(Resource):
         return make_response({}, 204)
     
 api.add_resource(PreOrdersById, '/preorders/<int:id>')
+
+#######################################################
+#
+#           REVIEWS VIEWS
+#
+#######################################################
+
+class Reviews(Resource):
+    def get(self):
+        reviews = [rev.to_dict() for rev in Review.query.all()]
+        return make_response(reviews, 200)
+    
+api.add_resource(Reviews, '/reviews')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
