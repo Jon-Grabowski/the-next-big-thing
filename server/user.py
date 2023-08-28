@@ -15,7 +15,6 @@ class User(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String)
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
-    age = db.Column(db.Integer)
     street_address = db.Column(db.String)
     city = db.Column(db.String)
     state = db.Column(db.String)

@@ -11,6 +11,7 @@ from app import app, db
 from user import User
 from products import Product
 from pre_orders import PreOrder
+from reviews import Review
 
 
 
@@ -22,12 +23,13 @@ if __name__ == '__main__':
         User.query.delete()
         Product.query.delete()
         PreOrder.query.delete()
+        Review.query.delete()
         db.session.commit()
 
         print('Seeding Users...')
-        u1 = User(email='jon@mail.com', password_hash='password', first_name='Jon', last_name='Grabowski', age=37, street_address='111 Happy Street', city='Somewhere', state='NY', zip_code='12345', promo=False)
-        u2 = User(email='jess@mail.com', password_hash='password', first_name='Jess', last_name='Papa', age=110, street_address='666 Darkway Street', city='Los Angeles', state='CA', zip_code='66666', promo=True)
-        u3 = User(email='amy@mail.com', password_hash='password', first_name='Amelia', last_name='Freeman', age=40, street_address='123 Main', city='Seattle', state='WA', zip_code='80321', promo=True)
+        u1 = User(email='jon@mail.com', password_hash='password', first_name='Jon', last_name='Grabowski', street_address='111 Happy Street', city='Somewhere', state='NY', zip_code='12345', promo=False)
+        u2 = User(email='jess@mail.com', password_hash='password', first_name='Jess', last_name='Papa', street_address='666 Darkway Street', city='Los Angeles', state='CA', zip_code='66666', promo=True)
+        u3 = User(email='amy@mail.com', password_hash='password', first_name='Amelia', last_name='Freeman', street_address='123 Main', city='Seattle', state='WA', zip_code='80321', promo=True)
         users = [u1,u2, u3]
         db.session.add_all(users)
         
@@ -48,4 +50,10 @@ if __name__ == '__main__':
         products = [p1, p2, p3]
         db.session.add_all(products)
 
+        print('Seeding Reviews...')
+        r1 = Review(name='Dr.Dre', title='producer/rapper', body="theNextBigThing is a symphony of innovation that harmonizes seamlessly with our evolving world. It's a melody of untapped possibilities that will undoubtedly set the tone for the future of technology.", image='https://pyxis.nymag.com/v1/imgs/d78/db3/e1663ff2983e9b999de28e63e35c7ae4db-29-dr-dre.rsquare.w330.jpg')
+        r2 = Review(name='Brad Pitt', title='A-list Actor', body="As an actor, I'm drawn to stories that push boundaries, and theNextBigThing is no different. This product is a masterpiece of technology that empowers users to embrace their roles as pioneers of the digital age.", image='https://pyxis.nymag.com/v1/imgs/70a/8bf/035e2a45436f3c1ee8bb609b2beabfd93c-9-brad-pitt.rsquare.w700.jpg')
+        reviews = [r1, r2]
+        db.session.add_all(reviews)
+        
         db.session.commit()

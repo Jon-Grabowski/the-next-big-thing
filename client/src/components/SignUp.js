@@ -117,19 +117,6 @@ function SignUp({formTrigger, setFormTrigger}){
                     </div>
                 </div>
 
-                                        {/* AGE */}
-                <div className="mb-3 row m-0">
-                    <label forhtml="age" className="form-label m-0 fs-5">Age</label>
-                    <div className="col-sm-2">             
-                        <input
-                        className="form-control col-sm-3 shadow-sm border border-2 border-secondary" 
-                        type="text"
-                        name="age"
-                        value={formik.values.age}
-                        onChange={formik.handleChange}
-                        required/>
-                    </div>
-                </div>
 
                                         {/* ADDRESS */}
                 <div className="mb-3 row m-0">
