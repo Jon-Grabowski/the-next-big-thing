@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { UserContext } from "./context/user";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import UserProfile from "./components/UserProfile";
 import SignUpLogIn from "./components/SignupLogIn";
 import Home from "./components/Home";
@@ -11,10 +10,9 @@ import About from "./components/About";
 import Reviews from "./components/Reviews";
 
 function App() {
-  const {user, setUser} = useContext(UserContext)
+  const { setUser} = useContext(UserContext)
 
   const [productArray, setProductArray] = useState([])
-  const history = useHistory()
 
     useEffect(()=>{
       getProducts()

@@ -3,7 +3,7 @@
     justify-content: space-evenly;
 } */
 body {
-    background-image: url('/home/jongr/Development/code/phase-5/phase-5-project/the-next-big-thing/client/public/assets/cool-background.png');
+    background-image: url('../public/assets/cool-background.png');
     background-size: cover;
 }
 
