@@ -43,44 +43,6 @@ function Reviews() {
 
             <div className='container-lg text-light'>
                 {reviewCards}
-                {/* <div className='d-flex justify-content-around my-5 align-items-center'>
-                    <div>
-                        <img
-                            src='https://pyxis.nymag.com/v1/imgs/d78/db3/e1663ff2983e9b999de28e63e35c7ae4db-29-dr-dre.rsquare.w330.jpg'
-                            alt=''
-                            className='rounded-circle float-start img-thumbnail'
-                            // style = {{'max-width': '10rem'}}
-                        />
-                    </div>
-                    <figure className="text-end">
-                        <blockquote className="blockquote">
-                            <p>"theNextBigThing is a symphony of innovation that harmonizes seamlessly with our evolving world. It's a melody of untapped possibilities that will undoubtedly set the tone for the future of technology."</p>
-                        </blockquote>
-                        <figcaption className="blockquote-footer fs-5">
-                            Dr.Dre,  <cite title="Source Title">producer/rapper</cite>
-                        </figcaption>
-                    </figure>
-                </div> */}
-
-                {/* <div className='d-flex justify-content-around my-5 align-items-center'>
-                    <figure>
-                        <blockquote className="blockquote">
-                            <p>"As an actor, I'm drawn to stories that push boundaries, and theNextBigThing is no different. This product is a masterpiece of technology that empowers users to embrace their roles as pioneers of the digital age."</p>
-                        </blockquote>
-                        <figcaption className="blockquote-footer fs-5 text-black">
-                            Someone famous in <cite title="Source Title">Source Title</cite>
-                        </figcaption>
-                    </figure>
-                    <div>
-                        <img
-                            src='https://pyxis.nymag.com/v1/imgs/d78/db3/e1663ff2983e9b999de28e63e35c7ae4db-29-dr-dre.rsquare.w330.jpg'
-                            alt=''
-                            className='rounded-circle img-thumbnail'
-                            // style = {{'max-width': '10rem'}}
-                        />
-                    </div>
-                </div> */}
-
             </div>
         </div>
     )

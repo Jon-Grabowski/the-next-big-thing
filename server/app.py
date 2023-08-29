@@ -127,7 +127,7 @@ def authorize():
     except:
         return make_response({
             "error": "User not found"   
-        }, 404)
+        }, 401)
 
 #######################################################
 #
