@@ -37,9 +37,11 @@ function UserProfile({fetchUser}) {
                     {edit ? <ProfileEdit setEdit={setEdit}/> : <ProfileView />}
                 </div>
                 {edit? null :
-                <div className='container-lg my-5'>
-                    <p className='display-4 border-bottom border-black border-2'>Pre-Orders</p>
-                    {orderCards}
+                <div className='container-lg'>
+                    <p className='display-4 border-bottom border-black border-2 ps-2 text-black'>Pre-Orders</p>
+                    <div className=''>
+                        {orderCards}
+                    </div>
                 </div>
                 }
             </div>
