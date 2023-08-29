@@ -32,7 +32,6 @@ class Users(Resource):
                 password_hash = data['password'],
                 first_name = data['first_name'].capitalize(),
                 last_name = data['last_name'].capitalize(),
-                age = int(data['age']),
                 street_address = data['street_address'],
                 city = data['city'].capitalize(),
                 state = data['state'],
@@ -46,7 +45,7 @@ class Users(Resource):
 
         except ValueError as e:
             if 'int()' in str(e):
-                response = make_response({"errors": 'Invalid zip code'}, 400)
+                response = make_response({"errors": "Invalid zip code"}, 400)
                 return response
             else:    
                 response = make_response({"errors": str(e)}, 400)
