@@ -6,10 +6,14 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function ProductDetail({featureProduct, fetchUser}) {
 
     const {id, name, price, description, image, specs} = featureProduct
-    const {user, setUser} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [confirmNum, setConfirmNum] = useState(null)
     const history = useHistory()
 
+    const specArray = specs.split('|')
+    const specsList = specArray.map((spec) => {
+        return <li key={specArray.indexOf(spec)} className='p-1'><strong>{spec}</strong></li>
+    })
 
     function handleModalClick() {
         history.push('/user')
@@ -38,20 +42,8 @@ function ProductDetail({featureProduct, fetchUser}) {
             })
     }
 
-    console.log(specs.split('|'))
-    const specArray = specs.split('|')
-    const specsList = specArray.map((spec) => {
-        return <li className='p-1'><strong>{spec}</strong></li>
-    })
 
     return(
-        // <div>
-        //     <img src={image} alt={name} className='w-25 rounded shadow'/>
-        //     {user ? <button className='btn btn-warning border-3 fw-bold mx-3 border-black' onClick={handleClick}>Place Pre-Order!</button> : null}
-        //     <h1>{name}</h1>
-        //     <h4>{price}</h4>
-        //     <p>{description}</p>           
-        // </div>
         <div className='container-lg'>
             <div className="card mb-3 feature-product-card shadow-lg">
                 <div className="row g-0">
@@ -67,7 +59,6 @@ function ProductDetail({featureProduct, fetchUser}) {
                             <ul>
                                 {specsList}
                             </ul>
-                            
                         </div>
                     </div>
                 </div>
@@ -92,25 +83,32 @@ function ProductDetail({featureProduct, fetchUser}) {
 
                                     {/* MODAL */}
             <div className="modal fade" id="confirm-preorder-modal" tabIndex="-1" aria-labelledby="confirm-preorder-modalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-lg">
+                <div className="modal-dialog modal-xl">
                     <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">PreOrder Placed!</h1>
+                        <div className="modal-header bg-success rounded-top">
+                            <h1 className="modal-title fs-4 text-white" id="exampleModalLabel">PreOrder Placed!</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <h3>{name}</h3>
-                            {confirmNum ? <p>{confirmNum}</p> : null}
-                            <div className="card w-75 mb-3">
-                                <div className='card-body'>
-                                    <div className="row g-0 border">
-                                        <div className="col-md-9">
-                                            <p className="card-title h3">{name}</p>
-                                            <p className="card-text h6">{price}</p>
+                            <p className="card-text h6 display-6 mb-3">Confirmation Number: {confirmNum}</p>
+                            <div className="card mb-3 text-light bg-primary rounded w-100 mx-auto">
+                                <div className='card-body p-1 bg-primary rounded'>
+                                    <div className="row g-0">
+                                        <div className="col-lg-7 bg-black p-2 d-flex justify-content-between">
+                                            <div className='mt-5'>
+                                                <p className="card-title display-5 ms-4 p-2 h-75">{name}</p>
+                                                
+                                            </div>
+                                            <div className='mt-5    '>
+                                                <p className="card-text h3 h-50 ms-3 p-2 pt-4">${price}</p>
+                                            </div>
                                         </div>
-                                        <div className="col-md-3">
-                                            <img className="card-img-end preorder-card-img" src={image} alt={name}/>
+                                        <div className="col-lg-5 bg-black p-2">
+                                            <img className="card-img-end preorder-card-img float-lg-end" src={image} alt={name}/>
                                         </div>
+                                    </div>
+                                    <div className='bg-black'>
+                                        
                                     </div>
                                 </div>
                             </div>

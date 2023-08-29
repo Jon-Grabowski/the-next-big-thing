@@ -10,7 +10,6 @@ function PreOrderCard({order, fetchUser}) {
             method: 'DELETE',
         }).then(r => {
             if (r.ok) {
-                console.log('DELETED!')
                 fetchUser()
             } else {
                 console.log('handle errors!')
