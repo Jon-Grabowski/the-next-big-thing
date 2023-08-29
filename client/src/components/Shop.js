@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import ProductCard from './ProductCard'
 import ProductDetail from './ProductDetail'
 
@@ -15,6 +15,8 @@ function Shop({productArray, fetchUser}) {
                     product ={product} 
                     setFeatureProduct={setFeatureProduct}
                     />
+            }else {
+                return null
             }
         })
     
