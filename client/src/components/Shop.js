@@ -19,7 +19,7 @@ function Shop({productArray, fetchUser}) {
                 return null
             }
         })
-    
+        
         return(
             <div>
                 <div className='container-lg'>

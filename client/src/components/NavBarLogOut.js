@@ -40,12 +40,12 @@ function NavBarLogOut() {
                     <button className="btn btn-dark dropdown-toggle border border-secondary me-4 px-4" data-bs-toggle="dropdown" aria-expanded="false">
                         Hi, {user.first_name}
                     </button>
-                    <ul className="dropdown-menu dropdown-menu-dark">
-                        <li className='nav-item dropdown w-50'>
-                            <Link to='/user' className='nav-link'>Account</Link>
+                    <ul className="dropdown-menu dropdown-menu-dark" style={{'minWidth': '7rem'}}>
+                        <li className='nav-item dropdown'>
+                            <Link to='/user' className='nav-link text-light'>Account</Link>
                         </li>
-                        <li className='nav-item dropdown w-50'>
-                            <Link to='/' className='nav-link' onClick={handleClick}>Logout</Link>
+                        <li className='nav-item dropdown'>
+                            <Link to='/' className='nav-link text-light' onClick={handleClick}>Logout</Link>
                         </li>
                     </ul>
                     </li>

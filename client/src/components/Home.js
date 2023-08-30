@@ -5,6 +5,7 @@ function Home(){
     function handleChange(){
         window.scrollTo({ top: 0, left: 0})
     }
+        
     return(
         <div>
             <div className='container-fluid'>
