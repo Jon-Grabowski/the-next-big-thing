@@ -20,7 +20,7 @@ function About() {
                     <div className='float-start m-2'>
                         <img
                         src='../assets/founder-image.jpg'
-                        alt ='Product founder picture'
+                        alt ='Product founder'
                         className='rounded float-start'
                         style = {{'maxWidth': '20rem'}}
                         />
@@ -54,7 +54,7 @@ function About() {
                     <div className='float-start m-2'>
                         <img
                         src='https://media.istockphoto.com/id/1276561384/photo/child-in-funny-science-chemistry-lab.jpg?s=612x612&w=0&k=20&c=MVnYQW8awPlZENxEzJ_03-LsCXmz8L9m_OsRAiHUtiM='
-                        alt ='Scientist Stock Photo'
+                        alt ='Scientist'
                         className='rounded float-start'
                         style = {{'maxWidth': '30rem'}}
                         />
@@ -64,7 +64,7 @@ function About() {
                     <div className='float-start m-2'>
                         <img
                         src='https://pbs.twimg.com/media/Fe5oDuCWYAIlD76?format=jpg&name=900x900'
-                        alt ='Scientist Stock Photo'
+                        alt ='Scientist'
                         className='rounded float-start'
                         style = {{'maxWidth': '30rem'}}
                         />
