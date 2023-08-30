@@ -2,13 +2,30 @@ import { UserContext } from "../context/user";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from "react";
 
 function ProductDetail({featureProduct, fetchUser}) {
 
     const {id, name, price, description, image, specs} = featureProduct
     const { user } = useContext(UserContext)
     const [confirmNum, setConfirmNum] = useState(null)
+    const [canOrder, setCanOrder] = useState(true)
     const history = useHistory()
+
+    useEffect(()=>{
+        if (user) {
+            let count = 0
+            for (const order of user.orders)
+                if (order.product_id === id) {
+                    count += 1
+                }
+            if (count > 1) {
+                setCanOrder(false)
+            }else {
+                setCanOrder(true)
+            }
+        }
+    }, [id, user])
 
     const specArray = specs.split('|')
     const specsList = specArray.map((spec) => {
@@ -69,14 +86,16 @@ function ProductDetail({featureProduct, fetchUser}) {
                     </div>
                     <div className='col-md-6 text-center d-flex flex-column align-items-center bg-primary bg-opacity-50'>
                         <h4 className='p-3'>We expect theNextBigThing to be in high demand!</h4>
-                        <h5 className='pb-4'>Place a preorder to reserve yours!</h5>
-                        {user ? 
+                        <h5 className='pb-0 mb-0'>Place a preorder to reserve yours!</h5>
+                        <p className=''><em>Limit 2 preorders per customer per model</em></p>
+                        {user ? canOrder ?
                             <button 
-                                className='btn btn-warning border-3 fw-bold mx-3 p-4 border-black' 
+                                className='btn btn-warning border-3 fw-bold mx-3 p-4 border-black fs-4' 
                                 onClick={handleClick}
                                 data-bs-toggle="modal" data-bs-target="#confirm-preorder-modal">
                                 Place Pre-Order!</button> 
-                            : <Link className='btn btn-secondary border-2 fw-bold mx-3 p-4 border-black' to='/signup-login'>Log In to PreOrder</Link> }
+                                :<p className='display-6'>You already have 2 preorders for {name}</p>
+                            : <Link className='btn btn-secondary border-2 fw-bold mx-3 p-4 border-black fs-5' to='/signup-login'>Log In to PreOrder</Link> }
                         </div>
                 </div>
             </div>

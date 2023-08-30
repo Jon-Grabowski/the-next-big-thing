@@ -23,7 +23,7 @@ class User(db.Model, SerializerMixin):
 
     orders = db.relationship('PreOrder', back_populates='user', cascade='all, delete-orphan')
 
-    serialize_rules = ('-_password_hash', '-orders.user', 'orders.product' )
+    serialize_rules = ('-_password_hash', '-orders.user', 'orders.product')
     
     @property
     def password_hash(self):
@@ -73,4 +73,13 @@ class User(db.Model, SerializerMixin):
             return code
         else:
             raise ValueError('Not a valid zip code')
+        
+    @property
+    def preorder_nums(self):
+        count_dict = []
+        for order in self.orders:
+            count_dict.append(order)
+
+        
+        return count_dict
 

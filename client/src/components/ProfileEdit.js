@@ -10,6 +10,8 @@ function ProfileEdit({setEdit}){
     const history = useHistory()
     const [error, setError] = useState('')
 
+    
+
     function trigger(){
         setDeleteTrigger(!deleteTrigger)
     }
