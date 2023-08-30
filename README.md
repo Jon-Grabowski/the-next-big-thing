@@ -6,17 +6,19 @@ Welcome to theNextBigThing website! This platform allows you to explore, pre-ord
 
 ## How to Use 
 
-1. **Clone Repository:** Start by cloning this repository to your local machine using `git clone git@github.com:Jon-Grabowski/the-next-big-thing.git`.
+1. **Python Version:** Make sure you're running python verison 3.8.13. If not, run `pyenv python 3.8.13`
 
-2. **Install Dependencies:** Navigate to the project directory and install the necessary dependencies with `npm install --prefix client` and `pipenv install`.
+2. **Clone Repository:** Start by cloning this repository to your local machine using `git clone git@github.com:Jon-Grabowski/the-next-big-thing.git`. 
 
-3. **Generate and Seed the Database:** Enter the development environment by using `pipenv shell`. Once in the shell, cd in the `server/` directory and run `flask db upgrade` to create the database file. Then run `python seed.py` to seed the database. 
+3. **Install Dependencies:** Navigate to the project directory and install the necessary dependencies with `npm install --prefix client` and `pipenv install`.
 
-4. **Launch the Backend Server:** From the `server/` directory, run `python app.py`.
+4. **Generate and Seed the Database:** Enter the development environment by using `pipenv shell`. Once in the shell, cd in the `server/` directory and run `flask db upgrade` to create the database file. Then run `python seed.py` to seed the database. 
 
-5. **Run the Application:** Open a new terminal and navagate to the project directory. Launch the website using `npm start --prefix client/`. This should launch the website in your browser.
+5. **Launch the Backend Server:** From the `server/` directory, run `python app.py`.
 
-6. **Explore and Interact:** Browse through product details, sign up or log in to your account, pre-order models, manage pre-orders, and edit account information.
+6. **Run the Application:** Open a new terminal and navagate to the project directory. Launch the website using `npm start --prefix client/`. This should launch the website in your browser.
+
+7. **Explore and Interact:** Browse through product details, sign up or log in to your account, pre-order models, manage pre-orders, and edit account information.
 
 ## Features
 
