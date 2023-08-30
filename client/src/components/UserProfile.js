@@ -22,6 +22,7 @@ function UserProfile({fetchUser}) {
                 fetchUser={fetchUser}
                 />
         })
+
         return(
             <div>
                 {edit ? 
@@ -45,7 +46,6 @@ function UserProfile({fetchUser}) {
                 </div>
                 }
             </div>
-
         )
     }
 }

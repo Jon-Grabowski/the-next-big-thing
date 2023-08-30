@@ -6,7 +6,7 @@ function SignUpLogIn(){
     const [formTrigger, setFormTrigger] = useState(false)
 
     return(
-        <div className=''>
+        <div>
             <div className='d-flex container-fluid bg-black justify-content-center'>
                 <img 
                     src='../assets/thenextbigthing-high-resolution-logo-color-on-transparent-background-cropped.png' 

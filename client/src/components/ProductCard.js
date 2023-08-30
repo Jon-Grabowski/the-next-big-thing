@@ -13,7 +13,6 @@ function ProductCard({product, setFeatureProduct}){
                 <img src={image} className="card-img-top rounded" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-text fs-4">{name}</h5>
-                    {/* <p className="card-text fs-5">${price}</p> */}
                 </div>
             </div>
         )

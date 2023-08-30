@@ -50,30 +50,6 @@ function PreOrderCard({order, fetchUser}) {
                 </div>
             </div>
         </div>
-
-        // <div className="card mb-3 text-light bg-primary rounded">
-        //     <div className='card-body p-1 bg-primary rounded'>
-        //         <div className="row g-0">
-        //             <div className="col-lg-6 bg-black p-2 d-flex align-items-center">
-        //                 <p className="card-title display-6 ms-4 p-2">{product.name}</p>
-        //                 <p className="card-text h4 ms-3 p-2">${product.price}</p>
-        //             </div>
-        //             <div className="col-lg-6 bg-black p-2">
-        //                 <img className="card-img-end preorder-card-img float-lg-end" src={product.image} alt={product.name}/>
-        //             </div>
-        //         </div>
-        //         <div className='bg-black'>
-        //             <p className="card-text h6">Confirmation Number: {confirm_num}</p>
-        //             {deleteTrigger ?
-        //             <div>
-        //                 <button className="" onClick={handleClick}>Cancel</button>
-        //                 <button className="" onClick={handleDelete}>Confirm Delete</button>
-        //             </div>
-        //             :<button className="" onClick={handleClick}>Delete Pre-Order</button>
-        //             }
-        //         </div>
-        //     </div>
-        // </div>
     )
 }
 

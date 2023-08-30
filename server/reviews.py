@@ -9,5 +9,3 @@ class Review(db.Model, SerializerMixin):
     title = db.Column(db.String)
     body = db.Column(db.String)
     image = db.Column(db.String)
-
-    

@@ -1,7 +1,3 @@
-/* #nav-bar-wrapper{
-    display: flex;
-    justify-content: space-evenly;
-} */
 body {
     background-image: url('../public/assets/cool-background.png');
     background-size: cover;
@@ -35,9 +31,3 @@ body {
 #logo-navbar{
     max-width: 5rem;
 }
-/* .other-products-card:hover {
-    transform: scale(1.2);
-} */
-/* #confirm_delete_user{
-    opacity: 0.5;
-} */

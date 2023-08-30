@@ -1,9 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy.orm import validates
-import ipdb
-
 
 from config import db, bcrypt
 
@@ -73,13 +69,3 @@ class User(db.Model, SerializerMixin):
             return code
         else:
             raise ValueError('Not a valid zip code')
-        
-    @property
-    def preorder_nums(self):
-        count_dict = []
-        for order in self.orders:
-            count_dict.append(order)
-
-        
-        return count_dict
-

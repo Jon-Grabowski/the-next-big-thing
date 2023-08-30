@@ -16,24 +16,6 @@ function NavBarLogOut() {
 
     return (
         <div>
-            {/* <button onClick={handleClick} className='btn btn-secondary'>Log Out</button> */}
-            {/* <div className="container-fluid me-2">
-                <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target="#user-dropdown" aria-controls="user-dropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-             
-                <div className="collapse navbar-collapse justify-content-start align-center" id="user-dropdown">
-                    <ul className='navbar-nav'>
-                        <li className='nav-item'>
-                            <Link to='/user' className='nav-link'>Account</Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/' className='nav-link' onClick={handleClick}>Logout</Link>
-                        </li>
-                    </ul>
-                </div>
-            </div> */}
-
             <div className="" id="navbarNavDarkDropdown">
                 <ul className="navbar-nav">
                     <li className="nav-item dropdown">

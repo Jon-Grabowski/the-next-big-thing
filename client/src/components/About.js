@@ -38,8 +38,6 @@ function About() {
                     <p className='px-3'>Through countless sleepless nights and countless iterations, Max harnessed the arcane forces of innovation to sculpt theNextBigThing into existence. Guided by an innate connection to the pulse of tomorrow, he forged a path through uncharted territories of possibility. As the world waits with bated breath for the release of theNextBigThing, Maximillian Veritas' legacy stands as a testament to the power of audacious dreams and the untamed spirit of exploration.</p>
                 </div>
             </div>
-
-
             <div className='container-lg text-light mt-5 pt-4'>
                 <div className='d-flex align-items-end border-bottom mb-4 justify-content-end'>
                         <p className='display-4'>Research & Tech</p>

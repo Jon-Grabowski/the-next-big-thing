@@ -148,7 +148,6 @@ function ProfileEdit({setEdit}){
                         <div className="col-2 m-0">             
                             <select
                             className="btn dropdown-toggle border shadow-sm text-dark bg-white" 
-                            // type="text"
                             name="state"
                             value={formik.values.state}
                             onChange={formik.handleChange}
@@ -247,7 +246,6 @@ function ProfileEdit({setEdit}){
                 <button className='btn btn-danger px-3 m-3' onClick={trigger}>Delete Account</button>
             </div>
             }
-            
         </div>
     )
 }

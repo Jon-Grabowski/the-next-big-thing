@@ -3,10 +3,9 @@ import { useContext, useState } from "react";
 import * as yup from "yup";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Link } from "react-router-dom/cjs/react-router-dom.min"
+
 
 function Login({formTrigger, setFormTrigger}) {
-    //TODO ERROR HANDLING
 
     const {setUser} = useContext(UserContext)
     const [error, setError] = useState('')

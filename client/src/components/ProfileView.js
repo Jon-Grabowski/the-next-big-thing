@@ -41,8 +41,6 @@ function ProfileView(){
                     {user.promo ? <p>Yes, send me promotional material</p> : <p>No, don't send me promotional material</p>}
                 </div>
             </div>
-            {/* ORDERS SECTION */}
-            
         </div>
     )
 }

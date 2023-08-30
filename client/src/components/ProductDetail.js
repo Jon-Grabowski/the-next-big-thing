@@ -139,7 +139,6 @@ function ProductDetail({featureProduct, fetchUser}) {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

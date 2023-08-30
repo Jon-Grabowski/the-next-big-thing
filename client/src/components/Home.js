@@ -9,7 +9,6 @@ function Home(){
     return(
         <div>
             <div className='container-fluid'>
-
             </div>
             <div className='container-fluid text-center p-0 m-0'>
                 <img 

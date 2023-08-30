@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
-# Standard library imports
 from random import randint, choice as rc
-
-# Remote library imports
 from faker import Faker
-
 # Local imports
 from app import app, db
 from user import User
@@ -33,9 +29,6 @@ if __name__ == '__main__':
         users = [u1,u2, u3]
         db.session.add_all(users)
         
-        # for i in range(5):
-        #     print(i)
-
         print('Seeding Products...')
         desc = 'Elevate your expectations with theNextBigThing - a paradigm-shifting invention that dares to challenge the status quo. Crafted with an unwavering commitment to innovation, this model encapsulates the essence of forward-thinking design and unparalleled functionality. Step into a world where boundaries blur and conventional notions are redefined. Experience the extraordinary, as theNextBigThing beckons you to explore uncharted realms of possibility.'
         specs = "Dimension Matrix: 8.2 x 5.6 x 0.72 quarks|Quantum Core Processor: 12.7 Teraflux|HyperVision Display: 6.7 inches of immersive brilliance|Electro-Resonance Battery: Up to 48 hours of boundless exploration|NeuralLink Connectivity: Seamlessly sync minds across dimensions|InfinitySense Cameras: Triple-lens system for capturing parallel perspectives|HarmonicSound Architecture: Immerse in audio frequencies beyond comprehension|EternaTouch Interface: Pressure-sensitive touch interaction"

@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function SignUp({formTrigger, setFormTrigger}){
-    //TODO ERROR HANDLING
+
     const {setUser} = useContext(UserContext)
     const history = useHistory()
     const [error, setError] = useState('')
@@ -152,7 +152,6 @@ function SignUp({formTrigger, setFormTrigger}){
                     <div className="col-sm-2 m-0">             
                         <select
                         className="btn dropdown-toggle border shadow-sm bg-white border border-2 border-secondary text-dark" 
-                        // type="text"
                         name="state"
                         value={formik.values.state}
                         onChange={formik.handleChange}
