@@ -50,4 +50,9 @@ This site is a work in progress and will continue to be developement. Planned ne
 - Giving certain users admin priviledges to access additional functionality.
 - A cart/checkout system for pre-orders.
 - A way for users to enter mock payment information and have it stored to their account.
-- Adding additional products and accessories 
+- Adding additional products and accessories
+
+## Authors
+
+#### Jon Grabowski
+LinkedIn: https://www.linkedin.com/in/jonathan-grabowski-72854348/
