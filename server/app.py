@@ -186,9 +186,9 @@ api.add_resource(PreOrdersById, '/preorders/<int:id>')
 class PreOrdersStats(Resource):
 
     def get(self):
-        total_orders = PreOrder.order_nums()
-        ipdb.set_trace()
-        return make_response({}, 200)
+        nums_dict = PreOrder.order_nums()
+        # og_orders = PreOrder.query.filter_by(product_id = 1).all()
+        return make_response(nums_dict, 200)
     
 api.add_resource(PreOrdersStats, '/preordersstats')
 

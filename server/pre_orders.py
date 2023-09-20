@@ -17,4 +17,13 @@ class PreOrder(db.Model, SerializerMixin):
     @classmethod
     def order_nums(self):
         total_preorders = PreOrder.query.count()
-        return total_preorders
+        og_preorders = PreOrder.query.filter_by(product_id = 1).count()
+        pro_preorders = PreOrder.query.filter_by(product_id = 2).count()
+        lite_preorders = PreOrder.query.filter_by(product_id = 3).count()
+        nums_dict = {
+            'total_preorders': total_preorders,
+            'og_preorders': og_preorders,
+            'pro_preorders': pro_preorders,
+            'lite_preorders': lite_preorders
+        }
+        return nums_dict

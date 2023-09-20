@@ -4,9 +4,12 @@ function AdminStats(){
     const [orderNums, setOrderNums] = useState({})
 
     useEffect(()=>{
-        fetch('/preordersstats')
-      }, [])
-
+        fetch('/preordersstats').then(r => {if (r.ok) {
+            r.json().then(stats => setOrderNums(stats))
+        }})
+    }, [])
+    
+    
     return (
         <div>
             <h2>Statistics</h2>
@@ -21,19 +24,19 @@ function AdminStats(){
                 <tbody>
                     <tr>
                     <th scope="row">theNextBigThing</th>
-                    <td>Mark</td>
+                    <td>{orderNums.og_preorders}</td>
                     <td>Otto</td>
 
                     </tr>
                     <tr>
                     <th scope="row">theNextBigThing Pro</th>
-                    <td>Jacob</td>
+                    <td>{orderNums.pro_preorders}</td>
                     <td>Thornton</td>
 
                     </tr>
                     <tr>
                     <th scope="row">theNextBigThing Lite</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td colSpan="2">{orderNums.lite_preorders}</td>
 
                     </tr>
                 </tbody>
