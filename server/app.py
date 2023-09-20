@@ -48,6 +48,9 @@ class Users(Resource):
         except IntegrityError as i:
             response = make_response({"errors": f'Account for {email} already exists.'}, 400)
             return response
+        except: 
+            response = make_response({"errors": f'Could not create account for {email}'}, 400)
+            return response
 
         return make_response(user.to_dict(), 201)
 

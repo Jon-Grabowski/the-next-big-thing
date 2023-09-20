@@ -23,7 +23,7 @@ if __name__ == '__main__':
         db.session.commit()
 
         print('Seeding Users...')
-        u1 = User(email='jon@mail.com', password_hash='password', first_name='Jon', last_name='Grabowski', street_address='111 Happy Street', city='Somewhere', state='NY', zip_code='12345', promo=False)
+        u1 = User(email='jon@mail.com', password_hash='password', first_name='Jon', last_name='Grabowski', street_address='111 Happy Street', city='Somewhere', state='NY', zip_code='12345', promo=False, admin=True)
         u2 = User(email='jess@mail.com', password_hash='password', first_name='Jess', last_name='Papa', street_address='666 Darkway Street', city='Los Angeles', state='CA', zip_code='66666', promo=True)
         u3 = User(email='amy@mail.com', password_hash='password', first_name='Amelia', last_name='Freeman', street_address='123 Main', city='Seattle', state='WA', zip_code='80321', promo=True)
         users = [u1,u2, u3]

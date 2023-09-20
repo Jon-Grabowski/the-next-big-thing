@@ -16,6 +16,7 @@ class User(db.Model, SerializerMixin):
     state = db.Column(db.String)
     zip_code = db.Column(db.Integer)
     promo = db.Column(db.Boolean)
+    admin = db.Column(db.Boolean, default=False)
 
     orders = db.relationship('PreOrder', back_populates='user', cascade='all, delete-orphan')
 

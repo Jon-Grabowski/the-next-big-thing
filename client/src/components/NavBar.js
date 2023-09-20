@@ -31,6 +31,14 @@ function NavBar() {
                         <li className='nav-item fs-5'>
                             <NavLink to='/reviews' className='nav-link'>Early Reviews</NavLink>
                         </li>
+                        {user ? 
+                        user.admin ? 
+                        <li className='nav-item fs-5'>
+                            <NavLink to='/admin' className='nav-link'>Admin Page</NavLink>
+                        </li>
+                        :null
+                        :null
+                        }
                     </ul>
                 </div>    
             </div>

@@ -8,9 +8,10 @@ import NavBar from "./components/NavBar";
 import Shop from './components/Shop'
 import About from "./components/About";
 import Reviews from "./components/Reviews";
+import AdminPage from "./components/AdminPage";
 
 function App() {
-  const { setUser} = useContext(UserContext)
+  const { user, setUser} = useContext(UserContext)
 
   const [productArray, setProductArray] = useState([])
 
@@ -55,6 +56,14 @@ function App() {
       <Route path='/signup-login'>
         <SignUpLogIn />
       </Route>
+      {user?
+      user.admin?
+      <Route path='/admin'>
+        <AdminPage />
+      </Route>
+      :
+      <div><h1>RESTRICTED PAGE</h1></div>
+      :<div><h1>RESTRICTED PAGE</h1></div>}
     </div>
   );
 }
