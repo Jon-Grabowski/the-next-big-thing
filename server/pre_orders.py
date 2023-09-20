@@ -13,3 +13,8 @@ class PreOrder(db.Model, SerializerMixin):
     product = db.relationship('Product', back_populates='orders')
 
     serialize_rules = ('-user.orders', '-product.orders')
+
+    @classmethod
+    def order_nums(self):
+        total_preorders = PreOrder.query.count()
+        return total_preorders
