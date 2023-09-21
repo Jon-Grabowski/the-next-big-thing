@@ -56,14 +56,9 @@ function App() {
       <Route path='/signup-login'>
         <SignUpLogIn />
       </Route>
-      {user?
-      user.admin?
       <Route path='/admin'>
         <AdminPage />
       </Route>
-      :
-      <div><h1>RESTRICTED PAGE</h1></div>
-      :<div><h1>RESTRICTED PAGE</h1></div>}
     </div>
   );
 }
