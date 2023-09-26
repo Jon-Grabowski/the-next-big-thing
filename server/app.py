@@ -204,6 +204,23 @@ class Reviews(Resource):
         reviews = [rev.to_dict() for rev in Review.query.all()]
         return make_response(reviews, 200)
     
+    def post(self):
+        data = request.json
+        try:
+            review = Review(
+                name = data['name'],
+                title = data['title'],
+                body = data['body'],
+                image = data['image']
+            )
+        except Exception as e:
+            return make_response({'error': str(e)}, 400)
+        
+        db.session.add(review)
+        db.session.commit()
+
+        return make_response(review.to_dict(), 201)
+    
 api.add_resource(Reviews, '/reviews')
 
 if __name__ == '__main__':

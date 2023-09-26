@@ -1,9 +1,24 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 
 function AdminAddReview(){
-
+    const [error, setError] = useState('')
     function addReview(newReview) {
-        console.log(newReview)
+        fetch("/reviews", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newReview),
+            }).then((resp) => {
+            if (resp.ok) {
+                resp.json().then(review => {
+                    console.log(review)
+                })
+            } else { 
+            resp.json().then(message => setError(message.errors));
+            }
+        });
     }
 
     const formik = useFormik({
@@ -23,53 +38,59 @@ function AdminAddReview(){
 
                                 {/* Name */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="name" className="form-label fs-4">Name</label>
                     <div className="col">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="text"
                         name="name"
+                        placeholder="Reviewer's Name"
                         value={formik.values.name}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
                                 {/* Title */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="title" className="form-label fs-4">Title</label>
                     <div className="col">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="text"
                         name="title"
+                        placeholder="Reviewer's Title"
                         value={formik.values.title}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
                                 {/* Body */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="body" className="form-label fs-4">Review</label>
                     <div className="col">             
-                        <input
+                        <textarea
                         className="form-control col-sm-6 shadow-sm" 
                         type="text"
                         name="body"
+                        placeholder="Review..."
+                        rows='10'
+                        cols="50"
                         value={formik.values.body}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
                                 {/* Image */}
                 <div className="mb-3 row m-0">
-                    <label forhtml="image" className="form-label fs-4">Image Link</label>
                     <div className="col">             
                         <input
                         className="form-control col-sm-6 shadow-sm" 
                         type="text"
                         name="image"
+                        placeholder="Reviewer Image Link"
                         value={formik.values.image}
-                        onChange={formik.handleChange}/>
+                        onChange={formik.handleChange}
+                        required/>
                     </div>
                 </div>
 
