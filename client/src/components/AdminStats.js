@@ -21,33 +21,33 @@ function AdminStats(){
                 <thead>
                     <tr className='text-white'>
                     <th scope="col" className='display-6 bg-black text-white'>Model</th>
-                    <th scope="col" className='display-6 bg-black text-white'>Pre-Orders</th>
-                    <th scope="col" className='display-6 bg-black text-white'>Projected Revenue</th>
+                    <th scope="col" className='display-6 bg-black text-white text-center'>Pre-Orders</th>
+                    <th scope="col" className='display-6 bg-black text-white text-center'>Projected Revenue</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                     <th scope="row">theNextBigThing</th>
-                    <td>{orderNums.og_preorders}</td>
-                    <td>${orderNums.og_preorders * 1500}</td>
+                    <td className='text-center'>{orderNums.og_preorders}</td>
+                    <td className='text-center'>${orderNums.og_preorders * 1500}</td>
                     </tr>
 
                     <tr>
                     <th scope="row">theNextBigThing Pro</th>
-                    <td>{orderNums.pro_preorders}</td>
-                    <td>${orderNums.pro_preorders*2200}</td>
+                    <td className='text-center'>{orderNums.pro_preorders}</td>
+                    <td className='text-center'>${orderNums.pro_preorders*2200}</td>
                     </tr>
 
                     <tr>
                     <th scope="row">theNextBigThing Lite</th>
-                    <td>{orderNums.lite_preorders}</td>
-                    <td>${orderNums.lite_preorders*950}</td>
+                    <td className='text-center'>{orderNums.lite_preorders}</td>
+                    <td className='text-center'>${orderNums.lite_preorders*950}</td>
                     </tr>
 
                     <tr className='border-top border-5 border-black'>
                     <th scope="row">TOTAL</th>
-                    <td>{totalPreOrders}</td>
-                    <td>${totalRevenue}</td>
+                    <td className='text-center'>{totalPreOrders}</td>
+                    <td className='text-center'>${totalRevenue}</td>
                     </tr>
                 </tbody>
             </table>
