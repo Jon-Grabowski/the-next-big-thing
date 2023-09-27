@@ -32,7 +32,7 @@ function AdminAddReview(){
         });
 
     return (
-        <div>
+        <div className='bg-white p-3'>
             <h2>Add Review</h2>
             <form onSubmit={formik.handleSubmit}>
 
@@ -40,7 +40,7 @@ function AdminAddReview(){
                 <div className="mb-3 row m-0">
                     <div className="col">             
                         <input
-                        className="form-control col-sm-6 shadow-sm" 
+                        className="form-control col-sm-6 shadow-sm border-black border-3" 
                         type="text"
                         name="name"
                         placeholder="Reviewer's Name"
@@ -54,7 +54,7 @@ function AdminAddReview(){
                 <div className="mb-3 row m-0">
                     <div className="col">             
                         <input
-                        className="form-control col-sm-6 shadow-sm" 
+                        className="form-control col-sm-6 shadow-sm border-black border-3" 
                         type="text"
                         name="title"
                         placeholder="Reviewer's Title"
@@ -68,7 +68,7 @@ function AdminAddReview(){
                 <div className="mb-3 row m-0">
                     <div className="col">             
                         <textarea
-                        className="form-control col-sm-6 shadow-sm" 
+                        className="form-control col-sm-6 shadow-sm border-black border-3" 
                         type="text"
                         name="body"
                         placeholder="Review..."
@@ -84,7 +84,7 @@ function AdminAddReview(){
                 <div className="mb-3 row m-0">
                     <div className="col">             
                         <input
-                        className="form-control col-sm-6 shadow-sm" 
+                        className="form-control col-sm-6 shadow-sm border-black border-3" 
                         type="text"
                         name="image"
                         placeholder="Reviewer Image Link"
