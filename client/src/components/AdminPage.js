@@ -1,6 +1,7 @@
 import AdminStats from "./AdminStats"
 import AdminAddProduct from "./AdminAddProduct"
 import AdminAddReview from "./AdminAddReview"
+import AdminSeeReviews from "./AdminSeeReviews";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/user";
 
@@ -41,7 +42,7 @@ function AdminPage() {
                                 :<a class="nav-link" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>}
                             </li>
                         </ul>
-                        {reviewPage ? null : <AdminAddReview />}
+                        {reviewPage ? <AdminSeeReviews /> : <AdminAddReview />}
                     </div>
                 </div>
             </div>
