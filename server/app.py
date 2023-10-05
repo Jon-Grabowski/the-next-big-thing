@@ -48,6 +48,9 @@ class Users(Resource):
         except IntegrityError as i:
             response = make_response({"errors": f'Account for {email} already exists.'}, 400)
             return response
+        except: 
+            response = make_response({"errors": f'Could not create account for {email}'}, 400)
+            return response
 
         return make_response(user.to_dict(), 201)
 
@@ -180,6 +183,16 @@ class PreOrdersById(Resource):
     
 api.add_resource(PreOrdersById, '/preorders/<int:id>')
 
+class PreOrdersStats(Resource):
+
+    def get(self):
+        nums_dict = PreOrder.order_nums()
+        # og_orders = PreOrder.query.filter_by(product_id = 1).all()
+        return make_response(nums_dict, 200)
+    
+api.add_resource(PreOrdersStats, '/preordersstats')
+
+
 #######################################################
 #
 #           REVIEWS VIEWS
@@ -190,6 +203,23 @@ class Reviews(Resource):
     def get(self):
         reviews = [rev.to_dict() for rev in Review.query.all()]
         return make_response(reviews, 200)
+    
+    def post(self):
+        data = request.json
+        try:
+            review = Review(
+                name = data['name'],
+                title = data['title'],
+                body = data['body'],
+                image = data['image']
+            )
+        except Exception as e:
+            return make_response({'error': str(e)}, 400)
+        
+        db.session.add(review)
+        db.session.commit()
+
+        return make_response(review.to_dict(), 201)
     
 api.add_resource(Reviews, '/reviews')
 

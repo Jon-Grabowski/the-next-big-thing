@@ -23,7 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 *.db
-../server/instance/
+../../server/instance/
 
 
 /server/instance/
+**/instance
