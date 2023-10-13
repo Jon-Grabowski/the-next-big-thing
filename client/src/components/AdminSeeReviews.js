@@ -16,7 +16,7 @@ function AdminSeeReviews(){
     })
 
     return(
-        <div>
+        <div className='accordion' id="reviewAccordion">
             {reviewCards}
         </div>
     )

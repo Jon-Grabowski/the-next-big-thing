@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function AdminReviewCard({review}) {
-    const {name, title, body, image} = review
+    const {id, name, title, body, image} = review
     const [cardTrigger, setCardTrigger] = useState(true)
 
     function handleCardClick() {
@@ -9,38 +9,20 @@ function AdminReviewCard({review}) {
     }
 
     return(
-        <div>
-            {cardTrigger ?
-            <div className="card mb-3" style={{"max-width": "35rem"}} onClick={handleCardClick}>
-                <div className="row g-0">
-                    <div className="col-md-4 text-center justify-content-center my-4">
-                    <img 
-                        src={image}
-                        alt={name}
-                        className='img-thumbnail p-1 bg-black text-center'
-                        style = {{'maxWidth': '8rem'}}/>
-                    </div>
-                    <div className="col-md-8">
-                    <div className="card-body">
-                        <h5 className="card-title">{name}</h5>
-                        <p className="card-text">{body}</p>
-                        <p className="card-text"><small className="text-body-secondary">{title.toUpperCase()}</small></p>
-                    </div>
-                    </div>
+        <div class="accordion-item p-2" style={{'width': '35rem'}}>
+            <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${name[0]}${id}`} aria-expanded="false" aria-controls="collapseTwo">
+                <strong className='fs-5'>{name},</strong><em className='fs-6 ps-2 '>{title}</em>
+            </button>
+            </h2>
+            <div id={`${name[0]}${id}`} class="accordion-collapse collapse" data-bs-parent="#reviewAccordion">
+            <div class="accordion-body">
+                <div className='d-xl-flex flex-row'>
+                    <img src={image} alt={name} style={{'height': "9rem"}} className='me-4'/>
+                    <p>{body}</p>
                 </div>
             </div>
-            :
-            <div className="card mb-3" style={{"max-width": "35rem"}} onClick={handleCardClick}>
-                <div className="row g-0">
-                    <div className="col-md-8">
-                    <div className="card-body">
-                        <h5 className="card-title">{name}</h5>
-                        <p className="card-text">{body}</p>
-                        <p className="card-text"><small className="text-body-secondary">{title.toUpperCase()}</small></p>
-                    </div>
-                    </div>
-                </div>
-            </div>}
+            </div>
         </div>
     )
 }
