@@ -5,7 +5,7 @@ import AdminSeeReviews from "./AdminSeeReviews";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/user";
 
-function AdminPage() {
+function AdminPage({reviews}) {
     const { user } = useContext(UserContext)
     const [reviewPage, setReviewPage] = useState(true)
 
@@ -42,7 +42,7 @@ function AdminPage() {
                                 :<a className="nav-link" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>}
                             </li>
                         </ul>
-                        {reviewPage ? <AdminSeeReviews /> : <AdminAddReview />}
+                        {reviewPage ? <AdminSeeReviews reviews={reviews}/> : <AdminAddReview />}
                     </div>
                 </div>
             </div>
