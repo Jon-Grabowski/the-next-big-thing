@@ -42,7 +42,7 @@ function AdminPage({reviews}) {
                                 :<a className="nav-link" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>}
                             </li>
                         </ul>
-                        {reviewPage ? <AdminSeeReviews reviews={reviews}/> : <AdminAddReview />}
+                        {reviewPage ? <AdminSeeReviews reviewsArray={reviews}/> : <AdminAddReview />}
                     </div>
                 </div>
             </div>

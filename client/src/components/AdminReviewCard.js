@@ -1,7 +1,7 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
 
-function AdminReviewCard({currReview}) {
+function AdminReviewCard({currReview, setReviews, reviewsArray}) {
     const [review, setReview] = useState(currReview)
     const {id, name, title, body, image} = review
     
@@ -29,7 +29,9 @@ function AdminReviewCard({currReview}) {
             method: "DELETE"
         }).then(r => {
             if (r.ok) {
-                alert(`Review by ${name} deleted.`)
+                alert(`Review by ${name} deleted.`);
+                const filteredReviews = reviewsArray.filter((review) => review.id !== id)
+                setReviews(filteredReviews)
             } else {
                 console.log('handle errors!')
             }
