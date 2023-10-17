@@ -223,5 +223,33 @@ class Reviews(Resource):
     
 api.add_resource(Reviews, '/reviews')
 
+class ReviewsById(Resource):
+    
+    def patch(self,id):
+        review = Review.query.filter_by(id=id).first()
+        if not review:
+            response = make_response({'error': 'Review not found'}, 404)
+            return response
+        
+        data = request.get_json()
+        for attr in data: 
+            try:
+                setattr(review, attr, data[attr])
+            except ValueError as e:
+                response = make_response({"errors": str(e)}, 400)
+                return response
+        
+        db.session.commit()
+
+        review_dict = review.to_dict()
+        response = make_response(review_dict, 202)
+        return response
+        
+
+        
+
+
+api.add_resource(ReviewsById, '/reviews/<int:id>')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

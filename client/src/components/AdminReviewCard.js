@@ -12,8 +12,16 @@ function AdminReviewCard({review}) {
             body: body,
             image: image
         },
-        onSubmit: (reviewInfo) => {console.log(reviewInfo)}
-        });
+        onSubmit: (reviewInfo) => {
+            fetch(`/reviews/${id}`, {
+            method: "PATCH",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(reviewInfo),
+            }).then((r) => r.json()).then((patchedReview) => console.log(patchedReview))
+        }
+    });
         
     return(
         <div className="accordion-item p-2" style={{'width': '35rem'}}>
