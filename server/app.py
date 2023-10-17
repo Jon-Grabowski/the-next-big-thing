@@ -244,9 +244,17 @@ class ReviewsById(Resource):
         review_dict = review.to_dict()
         response = make_response(review_dict, 202)
         return response
-        
 
+    def delete(self, id):
+        try:
+            review = Review.query.filter_by(id=id).first()
+        except Exception as e:
+            return make_response({'error': str(e)}, 404)
         
+        db.session.delete(review)
+        db.session.commit()
+
+        return make_response({}, 204)
 
 
 api.add_resource(ReviewsById, '/reviews/<int:id>')

@@ -23,6 +23,18 @@ function AdminReviewCard({currReview}) {
             }).then((r) => r.json()).then((patchedReview) => setReview(patchedReview))
         }
     });
+
+    function handleDelete() {
+        fetch(`/reviews/${id}`, {
+            method: "DELETE"
+        }).then(r => {
+            if (r.ok) {
+                alert(`Review by ${name} deleted.`)
+            } else {
+                console.log('handle errors!')
+            }
+        })
+    }
         
     return(
         <div className="accordion-item p-2" style={{'width': '35rem'}}>
@@ -47,6 +59,7 @@ function AdminReviewCard({currReview}) {
                         <button 
                             className='btn btn-danger btn-lg rounded-pill border border-black' 
                             style={{'width': '7rem'}}
+                            data-bs-toggle="modal" data-bs-target={`#${id}deleteReviewModal`}
                         >Delete</button>
                     </div>
                 </div>
@@ -56,94 +69,115 @@ function AdminReviewCard({currReview}) {
 
             <div className="modal fade" id={`${id}editReviewModal`} tabIndex="-1" aria-labelledby={`${id}editReviewModalLabel`} aria-hidden="true">
                 <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h1 className="modal-title fs-5" id={`${id}editReviewModalLabel`}>{`Edit ${name} Review`}</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id={`${id}editReviewModalLabel`}>{`Edit ${name} Review`}</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className='bg-white p-3'>
+                                <form id={`edit-review-form-${id}`} onSubmit={formik.handleSubmit}>
+
+                                                    {/* Name */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Name</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <input
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="name"
+                                            placeholder="Reviewer's Name"
+                                            value={formik.values.name}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+
+                                                    {/* Title */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Title</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <input
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="title"
+                                            placeholder="Reviewer's Title"
+                                            value={formik.values.title}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+
+                                                    {/* Body */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Review</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <textarea
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="body"
+                                            placeholder="Review..."
+                                            rows='10'
+                                            cols="50"
+                                            value={formik.values.body}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+
+                                                    {/* Image */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Image Link</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <input
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="image"
+                                            placeholder="Reviewer Image Link"
+                                            value={formik.values.image}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div className="modal-body">
-                                <div className='bg-white p-3'>
-                                    <form id={`edit-review-form-${id}`} onSubmit={formik.handleSubmit}>
-
-                                                        {/* Name */}
-                                        <div className="mb-0 row m-0">
-                                            <label className="col fs-5">Name</label>
-                                        </div>
-                                        <div className="mb-3 row m-0">
-                                            <div className="col">             
-                                                <input
-                                                className="form-control col-sm-6 shadow-sm border-black border-3" 
-                                                type="text"
-                                                name="name"
-                                                placeholder="Reviewer's Name"
-                                                value={formik.values.name}
-                                                onChange={formik.handleChange}
-                                                required/>
-                                            </div>
-                                        </div>
-
-                                                        {/* Title */}
-                                        <div className="mb-0 row m-0">
-                                            <label className="col fs-5">Title</label>
-                                        </div>
-                                        <div className="mb-3 row m-0">
-                                            <div className="col">             
-                                                <input
-                                                className="form-control col-sm-6 shadow-sm border-black border-3" 
-                                                type="text"
-                                                name="title"
-                                                placeholder="Reviewer's Title"
-                                                value={formik.values.title}
-                                                onChange={formik.handleChange}
-                                                required/>
-                                            </div>
-                                        </div>
-
-                                                        {/* Body */}
-                                        <div className="mb-0 row m-0">
-                                            <label className="col fs-5">Review</label>
-                                        </div>
-                                        <div className="mb-3 row m-0">
-                                            <div className="col">             
-                                                <textarea
-                                                className="form-control col-sm-6 shadow-sm border-black border-3" 
-                                                type="text"
-                                                name="body"
-                                                placeholder="Review..."
-                                                rows='10'
-                                                cols="50"
-                                                value={formik.values.body}
-                                                onChange={formik.handleChange}
-                                                required/>
-                                            </div>
-                                        </div>
-
-                                                        {/* Image */}
-                                        <div className="mb-0 row m-0">
-                                            <label className="col fs-5">Image Link</label>
-                                        </div>
-                                        <div className="mb-3 row m-0">
-                                            <div className="col">             
-                                                <input
-                                                className="form-control col-sm-6 shadow-sm border-black border-3" 
-                                                type="text"
-                                                name="image"
-                                                placeholder="Reviewer Image Link"
-                                                value={formik.values.image}
-                                                onChange={formik.handleChange}
-                                                required/>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" className="btn btn-primary" form={`edit-review-form-${id}`} data-bs-dismiss="modal">Save changes</button>
-                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" className="btn btn-primary" form={`edit-review-form-${id}`} data-bs-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
+            </div>
+
+                                {/* DELELTE REVIEW MODAL */}
+
+            <div className="modal fade" id={`${id}deleteReviewModal`} tabIndex="-1" aria-labelledby={`${id}deleteReviewModalLabel`} aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id={`${id}deleteReviewModalLabel`}>Confirm Delete</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    <div className="modal-body">
+                        {`Delete review by ${name} ?`}
+                    </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={handleDelete}>Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 }
