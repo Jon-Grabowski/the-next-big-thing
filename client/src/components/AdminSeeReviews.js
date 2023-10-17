@@ -4,7 +4,7 @@ import AdminReviewCard from "./AdminReviewCard"
 function AdminSeeReviews({reviews}){
 
     const reviewCards = reviews.map((review) => {
-        return <AdminReviewCard key = {review.id} review={review} />
+        return <AdminReviewCard key = {review.id} currReview={review} />
     })
 
     return(

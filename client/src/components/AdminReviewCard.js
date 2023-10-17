@@ -1,7 +1,8 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
 
-function AdminReviewCard({review}) {
+function AdminReviewCard({currReview}) {
+    const [review, setReview] = useState(currReview)
     const {id, name, title, body, image} = review
     
 
@@ -19,7 +20,7 @@ function AdminReviewCard({review}) {
             "Content-Type": "application/json",
             },
             body: JSON.stringify(reviewInfo),
-            }).then((r) => r.json()).then((patchedReview) => console.log(patchedReview))
+            }).then((r) => r.json()).then((patchedReview) => setReview(patchedReview))
         }
     });
         
