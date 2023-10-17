@@ -30,16 +30,16 @@ function AdminPage() {
                         <AdminAddProduct />
                     </div>
                     <div className='border-top border-bottom border-4 border-black rounded p-3 m-3 bg-white bg-opacity-75 '>
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
+                        <ul className="nav nav-tabs">
+                            <li className="nav-item">
                                 {reviewPage?
                                 <a className="nav-link active" aria-current="page" id='review-page-button' onClick={handleReviewClick}>Reviews</a>
                                 :<a className="nav-link" aria-current="page" id='review-page-button' onClick={handleReviewClick}>Reviews</a>}
                                 </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 {!reviewPage?
-                                <a class="nav-link active" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>
-                                :<a class="nav-link" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>}
+                                <a className="nav-link active" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>
+                                :<a className="nav-link" id='review-add-button' active='true' onClick={handleReviewClick}>Add New</a>}
                             </li>
                         </ul>
                         {reviewPage ? <AdminSeeReviews /> : <AdminAddReview />}
