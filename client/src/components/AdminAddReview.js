@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 
-function AdminAddReview(){
+function AdminAddReview({reviewsArray, setReviews, setReviewPage}){
 
     const [error, setError] = useState('')
     
@@ -15,7 +15,9 @@ function AdminAddReview(){
             }).then((resp) => {
             if (resp.ok) {
                 resp.json().then(review => {
-                    console.log(review)
+                    alert(`Review for ${review.name} created`)
+                    setReviews([...reviewsArray, review])
+                    setReviewPage(true)
                 })
             } else { 
             resp.json().then(message => setError(message.errors));
