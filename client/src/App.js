@@ -14,10 +14,12 @@ function App() {
   const { user, setUser} = useContext(UserContext)
 
   const [productArray, setProductArray] = useState([])
+  const [reviews, setReviews] = useState([])
 
     useEffect(()=>{
       getProducts()
       fetchUser()
+      getReviews()
     }, [])
 
     function fetchUser() {
@@ -34,6 +36,12 @@ function App() {
       .then(products => setProductArray(products)) 
     }
 
+    function getReviews() {
+        fetch('/reviews')
+        .then(r => r.json())
+        .then(reviewArray => setReviews(reviewArray))
+    }
+
 
   return (
     <div className="App">
@@ -48,7 +56,7 @@ function App() {
         <About />
       </Route>
       <Route exact path='/reviews'>
-        <Reviews />
+        <Reviews reviews={reviews}/>
       </Route>
       <Route path='/user'>
         <UserProfile fetchUser={fetchUser}/>
@@ -57,7 +65,7 @@ function App() {
         <SignUpLogIn />
       </Route>
       <Route path='/admin'>
-        <AdminPage />
+        <AdminPage reviews={reviews} setReviews={setReviews}/>
       </Route>
     </div>
   );

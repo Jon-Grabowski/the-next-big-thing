@@ -24,13 +24,13 @@ function Login({formTrigger, setFormTrigger}) {
             body: JSON.stringify(loginInfo),
         }).then((resp) => {
             if (resp.ok) {
-            resp.json().then((user) => {
-                setUser(user)
-                setError('')
-                history.goBack()
-            });
+                resp.json().then((user) => {
+                    setUser(user)
+                    setError('')
+                    history.goBack()
+                });
             } else {
-            resp.json().then(message => setError(message['error']));
+                resp.json().then(message => setError(message['error']));
             }
         });
     }

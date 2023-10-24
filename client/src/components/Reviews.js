@@ -2,15 +2,8 @@ import { useEffect, useState } from "react"
 import ReviewCard1 from "./ReviewCard1"
 import ReviewCard2 from "./ReviewCard2"
 
-function Reviews() {
+function Reviews({reviews}) {
 
-    const [reviews, setReviews] = useState([])
-
-    useEffect(() => {
-        fetch('/reviews')
-        .then(r => r.json())
-        .then(reviewArray => setReviews(reviewArray))
-    }, [])
 
     let trigger = 0
     const reviewCards = reviews.map((review) => {
