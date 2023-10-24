@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
-
+//TODO Have PATCH setReviews
 function AdminReviewCard({currReview, setReviews, reviewsArray}) {
     const [review, setReview] = useState(currReview)
     const {id, name, title, body, image} = review
@@ -20,7 +20,15 @@ function AdminReviewCard({currReview, setReviews, reviewsArray}) {
             "Content-Type": "application/json",
             },
             body: JSON.stringify(reviewInfo),
-            }).then((r) => r.json()).then((patchedReview) => setReview(patchedReview))
+            }).then((r) => r.json()).then((patchedReview) => {
+                const filteredReviews = reviewsArray.map((review) => {
+                    if (review.id === patchedReview.id){
+                        return patchedReview
+                    }return review}
+                );
+                setReviews(filteredReviews);
+                setReview(patchedReview);
+            })
         }
     });
 
