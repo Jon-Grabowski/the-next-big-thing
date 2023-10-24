@@ -65,7 +65,7 @@ function App() {
         <SignUpLogIn />
       </Route>
       <Route path='/admin'>
-        <AdminPage reviews={reviews} setReviews={setReviews}/>
+        <AdminPage reviews={reviews} setReviews={setReviews} productArray={productArray} setProductArray={setProductArray}/>
       </Route>
     </div>
   );

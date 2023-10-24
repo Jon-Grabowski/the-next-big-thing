@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
-//TODO Have PATCH setReviews
+
 function AdminReviewCard({currReview, setReviews, reviewsArray}) {
     const [review, setReview] = useState(currReview)
     const {id, name, title, body, image} = review
