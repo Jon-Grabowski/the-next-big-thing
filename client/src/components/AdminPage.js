@@ -39,7 +39,7 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                                 <div className='px-3'>
                                     <button 
                                         id='review-add-button' 
-                                        className={productPage ? 'btn btn-dark text-warning fs-5': 'btn btn-secondary fs-5'} 
+                                        className={productPage ? 'btn btn-success fs-5': 'btn btn-secondary fs-5'} 
                                         onClick={handleProductClick}
                                         >
                                         {productPage ? 'Add New' : 'Discard'}
@@ -58,7 +58,7 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                                 <div className='px-3'>
                                     <button 
                                         id='review-add-button' 
-                                        className={reviewPage ? 'btn btn-dark text-warning fs-5': 'btn btn-secondary fs-5'} 
+                                        className={reviewPage ? 'btn btn-success fs-5': 'btn btn-secondary fs-5'} 
                                         onClick={handleReviewClick}
                                         >
                                         {reviewPage ? 'Add New' : 'Discard'}

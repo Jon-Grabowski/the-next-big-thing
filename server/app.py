@@ -141,6 +141,21 @@ class Products(Resource):
     
 api.add_resource(Products, '/products')
 
+class ProductsByID(Resource):
+
+    def delete(self, id):
+        try:
+            product = Product.query.filter_by(id=id).first()
+        except Exception as e:
+            return make_response({'error': str(e)}, 400)
+        ipdb.set_trace()
+        db.session.delete(product)
+        db.session.commit()
+
+        return make_response({}, 204)
+
+api.add_resource(ProductsByID, '/products/<int:id>')
+
 #######################################################
 #
 #           PRE-ORDERS VIEWS
