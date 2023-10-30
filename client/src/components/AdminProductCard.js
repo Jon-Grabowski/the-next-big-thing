@@ -20,8 +20,6 @@ function AdminProductCard({product}) {
         })
     }
 
-    console.log(specArray)
-
     return (
         <div className="accordion-item p-2" style={{'width': '35rem'}}>
             <h2 className="accordion-header">
