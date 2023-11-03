@@ -6,9 +6,36 @@ function AdminAddProduct(){
     const [specLines, setSpecLines] = useState(3)
     const specInputs = []
 
+    function postFetch(newProduct) {
+        fetch("/products", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newProduct),
+        })
+        .then( r => {
+            // TODO: handle response from backend
+            if (r.ok) {
+                r.json().then(newProduct => {console.log(newProduct)})
+            } else {
+                console.log(r)
+            }
+        })
+    }
 
-    function addProduct(newProduct) {
-        console.log(newProduct)
+    function handleSubmit(newProduct) {
+        newProduct.price = parseInt(newProduct.price)
+        const specsArray = []
+        for (const line in newProduct) {
+            if (line.includes('spec')){
+                specsArray.push(newProduct[line])
+                delete newProduct[line]
+            }
+        }
+        const specString = specsArray.join('|')
+        newProduct.specs = specString
+        postFetch(newProduct)
     }
 
     function addSpecLine() {
@@ -21,13 +48,13 @@ function AdminAddProduct(){
 
     const initialValues = {
         name: "",
-        price:"",
+        price:null,
         description: "",
         image:""
     }
     const formik = useFormik({
         initialValues,
-        onSubmit: (productInfo) => {addProduct(productInfo)}
+        onSubmit: (newProduct) => {handleSubmit(newProduct)}
         });
 
     for (let i = 0; i < specLines; i++) {

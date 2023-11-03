@@ -139,6 +139,26 @@ class Products(Resource):
         products = [p.to_dict() for p in Product.query.all()]
         return make_response(products, 200)
     
+    def post(self):
+        data = request.get_json()
+        try:
+            product = Product(
+                name = data['name'],
+                price = data['price'],
+                description = data['description'],
+                image = data['image'],
+                specs = data['specs']
+            )
+            
+            db.session.add(product)
+            db.session.commit()
+
+            return make_response(product.to_dict(), 201)
+        
+        except Exception as e:
+            return make_response({'error': str(e)}, 400)   
+        
+        
 api.add_resource(Products, '/products')
 
 class ProductsByID(Resource):
@@ -148,7 +168,6 @@ class ProductsByID(Resource):
             product = Product.query.filter_by(id=id).first()
         except Exception as e:
             return make_response({'error': str(e)}, 400)
-        ipdb.set_trace()
         db.session.delete(product)
         db.session.commit()
 
