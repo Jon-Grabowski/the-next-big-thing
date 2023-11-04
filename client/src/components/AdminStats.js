@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-
+// TODO: REFACTOR USING PRODUCTARRAY FROM APP.js | LOOP THROUGH PRODUCTS TO CREATE TABLE ROWS
 function AdminStats(){
     const [orderNums, setOrderNums] = useState({})
     

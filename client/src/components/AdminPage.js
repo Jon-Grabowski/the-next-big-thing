@@ -49,7 +49,7 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                             {productPage ? 
                             <AdminSeeProducts productArray={productArray} setProductArray={setProductArray}/> 
                             : 
-                        <AdminAddProduct productArray={productArray} setProductArray={setProductArray}/>}
+                            <AdminAddProduct productArray={productArray} setProductArray={setProductArray} setProductPage={setProductPage}/>}
                         </div>
                     </div>
                     <div className='col-xl-6'>

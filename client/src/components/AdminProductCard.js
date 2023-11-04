@@ -1,5 +1,5 @@
 
-function AdminProductCard({product}) {
+function AdminProductCard({product, setProductArray, productArray}) {
 
     const {id, name, price, description, image, specs} = product
 
@@ -13,6 +13,8 @@ function AdminProductCard({product}) {
             method: "DELETE"
         }).then(r => {
             if (r.ok) {
+                const filteredProducts = productArray.filter(review => review.id !== id)
+                setProductArray(filteredProducts)
                 alert(`${name} removed.`);
             } else {
                 alert('ERROR!')
@@ -67,7 +69,7 @@ function AdminProductCard({product}) {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                     <div className="modal-body">
-                        {`Delete Product by ${name} ?`}
+                        {`Delete ${name}?`}
                     </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
