@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react"
+function AdminStats({productArray}){
 
-// TODO: REFACTOR USING PRODUCTARRAY FROM APP.js | LOOP THROUGH PRODUCTS TO CREATE TABLE ROWS
-function AdminStats(){
-    const [orderNums, setOrderNums] = useState({})
+    let totalRevenue = 0
+    let totalPreOrders = 0
     
+    const productRows = productArray.map( product => {
+        totalRevenue+=product.price
+        totalPreOrders+=product.orders.length
+        return (
+            <tr key={product.id}>
+                <th scope="row">{product.name}</th>
+                <td className='text-center'>{product.orders.length}</td>
+                <td className='text-center'>${product.orders.length*product.price}</td>
+            </tr>
+        )
+    })
 
-    useEffect(()=>{
-        fetch('/preordersstats').then(r => {if (r.ok) {
-            r.json().then(stats => setOrderNums(stats))
-        }})
-    }, [])
-    
-    const totalPreOrders = orderNums.og_preorders + orderNums.lite_preorders + orderNums.pro_preorders
-    const totalRevenue = orderNums.og_preorders*1500 + orderNums.lite_preorders*950 + orderNums.pro_preorders*2200
-    
     return (
         <div>
             <h2>Statistics</h2>
@@ -26,29 +27,15 @@ function AdminStats(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">theNextBigThing</th>
-                    <td className='text-center'>{orderNums.og_preorders}</td>
-                    <td className='text-center'>${orderNums.og_preorders * 1500}</td>
-                    </tr>
 
-                    <tr>
-                    <th scope="row">theNextBigThing Pro</th>
-                    <td className='text-center'>{orderNums.pro_preorders}</td>
-                    <td className='text-center'>${orderNums.pro_preorders*2200}</td>
-                    </tr>
-
-                    <tr>
-                    <th scope="row">theNextBigThing Lite</th>
-                    <td className='text-center'>{orderNums.lite_preorders}</td>
-                    <td className='text-center'>${orderNums.lite_preorders*950}</td>
-                    </tr>
-
+                    {productRows}
+                    
                     <tr className='border-top border-5 border-black'>
                     <th scope="row">TOTAL</th>
                     <td className='text-center'>{totalPreOrders}</td>
                     <td className='text-center'>${totalRevenue}</td>
                     </tr>
+
                 </tbody>
             </table>
         </div>

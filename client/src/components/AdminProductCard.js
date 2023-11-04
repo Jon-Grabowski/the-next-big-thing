@@ -59,6 +59,9 @@ function AdminProductCard({product, setProductArray, productArray}) {
                 </div>
             </div>
 
+                            {/* TODO: CREATE EDIT PRODUCT MODAL */}
+                                {/* EDIT PRODUCT MODAL */}
+
                                 {/* DELELTE PRODUCT MODAL */}
 
             <div className="modal fade" id={`${id}deleteProductModal`} tabIndex="-1" aria-labelledby={`${id}deleteProductModalLabel`} aria-hidden="true">

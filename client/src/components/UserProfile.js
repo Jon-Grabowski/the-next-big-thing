@@ -5,7 +5,7 @@ import ProfileView from "./ProfileView";
 import ProfileEdit from "./ProfileEdit";
 import PreOrderCard from "./PreOrderCard";
 
-function UserProfile({fetchUser}) {
+function UserProfile({fetchUser, getProducts}) {
     const {user} = useContext(UserContext)
     const [edit, setEdit] = useState(false)
     
@@ -20,6 +20,7 @@ function UserProfile({fetchUser}) {
                 key={order.id} 
                 order={order}
                 fetchUser={fetchUser}
+                getProducts={getProducts}
                 />
         })
 

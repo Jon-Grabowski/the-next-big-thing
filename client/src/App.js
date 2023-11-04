@@ -50,7 +50,7 @@ function App() {
         <Home />
       </Route>
       <Route exact path='/shop'>
-        <Shop productArray={productArray} fetchUser={fetchUser}/>
+        <Shop productArray={productArray} getProducts={getProducts} fetchUser={fetchUser}/>
       </Route>
       <Route exact path='/about'>
         <About />
@@ -59,7 +59,7 @@ function App() {
         <Reviews reviews={reviews}/>
       </Route>
       <Route path='/user'>
-        <UserProfile fetchUser={fetchUser}/>
+        <UserProfile fetchUser={fetchUser} getProducts={getProducts}/>
       </Route>
       <Route path='/signup-login'>
         <SignUpLogIn />

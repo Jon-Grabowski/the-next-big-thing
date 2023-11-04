@@ -4,7 +4,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 
-function ProductDetail({featureProduct, fetchUser}) {
+function ProductDetail({featureProduct, fetchUser, getProducts}) {
 
     const {id, name, price, description, image, specs} = featureProduct
     const { user } = useContext(UserContext)
@@ -52,6 +52,7 @@ function ProductDetail({featureProduct, fetchUser}) {
                     resp.json().then((order) => {
                         setConfirmNum(order.confirm_num)
                         fetchUser()
+                        getProducts()
                     });
                 } else {
                     console.log("handle errors!!");

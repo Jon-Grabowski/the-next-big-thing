@@ -15,7 +15,7 @@ function AdminAddProduct({setProductArray, productArray, setProductPage}){
             body: JSON.stringify(newProduct),
         })
         .then( r => {
-            // TODO: handle response from backend
+            // TODO: HANDLE ERRORS AND VALIDATIONS
             if (r.ok) {
                 r.json().then(newProduct => {
                     setProductArray([...productArray, newProduct])
@@ -64,7 +64,7 @@ function AdminAddProduct({setProductArray, productArray, setProductPage}){
         const currSpec = `spec${i+1}`
         initialValues[currSpec] = ''
         specInputs.push(
-            <div className="mb-3 row m-0">
+            <div className="mb-3 row m-0" key={currSpec}>
                     <div className="col">             
                         <input
                         className="form-control col-sm-6 shadow-sm border-black border-3" 

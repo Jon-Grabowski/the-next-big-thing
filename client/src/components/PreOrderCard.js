@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function PreOrderCard({order, fetchUser}) {
+function PreOrderCard({order, fetchUser, getProducts}) {
 
     const {id, confirm_num, product} = order
     const [deleteTrigger, setDeleteTrigger] = useState(false)
@@ -11,6 +11,7 @@ function PreOrderCard({order, fetchUser}) {
         }).then(r => {
             if (r.ok) {
                 fetchUser()
+                getProducts()
             } else {
                 console.log('handle errors!')
             }

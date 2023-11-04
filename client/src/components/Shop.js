@@ -3,7 +3,7 @@ import {  useState } from 'react'
 import ProductCard from './ProductCard'
 import ProductDetail from './ProductDetail'
 
-function Shop({productArray, fetchUser}) {
+function Shop({productArray, getProducts, fetchUser}) {
     const [featureProduct, setFeatureProduct] = useState(null)
 
     if (productArray.length > 0 && featureProduct) {
@@ -25,7 +25,7 @@ function Shop({productArray, fetchUser}) {
                 <div className='container-lg'>
                     <h1 className='display-4 mt-3 mb-5 border-bottom border-3 border-black'>Place PreOrder</h1>
                 </div>
-                <ProductDetail featureProduct={featureProduct} fetchUser={fetchUser}/>
+                <ProductDetail featureProduct={featureProduct} fetchUser={fetchUser} getProducts={getProducts}/>
                 <p className='display-6 text-center text-light'>Additional Models</p>
                 <div className='card-group container-md d-flex justify-content-evenly'>
                     {cardProducts}
