@@ -20,7 +20,7 @@ function AdminStats(){
             <table className="table fs-3 border border-4 border-black">
                 <thead>
                     <tr className='text-white'>
-                    <th scope="col" className='display-6 bg-black text-white'>Model</th>
+                    <th scope="col" className='display-6 bg-black text-white'>Product</th>
                     <th scope="col" className='display-6 bg-black text-white text-center'>Pre-Orders</th>
                     <th scope="col" className='display-6 bg-black text-white text-center'>Projected Revenue</th>
                     </tr>

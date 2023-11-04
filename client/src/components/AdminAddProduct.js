@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 
-function AdminAddProduct(){
+function AdminAddProduct({setProductArray, productArray}){
 
     const [specLines, setSpecLines] = useState(3)
     const specInputs = []
@@ -17,7 +17,7 @@ function AdminAddProduct(){
         .then( r => {
             // TODO: handle response from backend
             if (r.ok) {
-                r.json().then(newProduct => {console.log(newProduct)})
+                r.json().then(newProduct => {setProductArray([...productArray, newProduct])})
             } else {
                 console.log(r)
             }
@@ -48,7 +48,7 @@ function AdminAddProduct(){
 
     const initialValues = {
         name: "",
-        price:null,
+        price:"",
         description: "",
         image:""
     }

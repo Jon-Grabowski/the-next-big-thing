@@ -24,7 +24,7 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
             <div className='container-lg'>
                 <p className='display-4'>Admin Page</p>
                 <div className=''>
-                    <AdminStats />
+                    <AdminStats productArray={productArray} />
                 </div>
                 <div className='border-top p-5 pb-2 m-5 mb-2'></div>
                 <div className='row'>
@@ -46,7 +46,10 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                                     </button>
                                 </div>
                             </div>
-                            {productPage? <AdminSeeProducts productArray={productArray} setProductArray={setProductArray}/> : <AdminAddProduct />}
+                            {productPage ? 
+                            <AdminSeeProducts productArray={productArray} setProductArray={setProductArray}/> 
+                            : 
+                        <AdminAddProduct productArray={productArray} setProductArray={setProductArray}/>}
                         </div>
                     </div>
                     <div className='col-xl-6'>
