@@ -7,7 +7,7 @@ function AdminSeeReviews({reviews, setReviews}){
     })
 
     return(
-        <div className='accordion' id="reviewAccordion" >
+        <div className='accordion border rounded border-light border-4' id="reviewAccordion" >
             {reviewCards}
         </div>
     )

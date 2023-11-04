@@ -23,7 +23,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
     }
 
     return (
-        <div className="accordion-item p-2" style={{'width': '35rem'}}>
+        <div className="accordion-item" >
             <h2 className="accordion-header">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${name[0]}${id}`} aria-expanded="false" aria-controls="collapseTwo">
                 <strong className='fs-4'>{name}</strong>

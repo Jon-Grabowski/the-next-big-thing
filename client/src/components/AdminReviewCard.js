@@ -47,7 +47,7 @@ function AdminReviewCard({currReview, setReviews, reviewsArray}) {
     }
         
     return(
-        <div className="accordion-item p-2" style={{'width': '35rem'}}>
+        <div className="accordion-item">
             <h2 className="accordion-header">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#${name[0]}${id}`} aria-expanded="false" aria-controls="collapseTwo">
                 <strong className='fs-5'>{name},</strong><em className='fs-6 ps-2 '>{title}</em>

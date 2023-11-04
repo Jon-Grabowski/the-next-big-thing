@@ -28,6 +28,8 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                 </div>
                 <div className='border-top p-5 pb-2 m-5 mb-2'></div>
                 <div className='row'>
+
+                    {/* PRODUCT WINDOW */}
                     <div className='col-xl-6'>
                         <div 
                             className='border-top border-bottom border-4 border-black rounded p-3 m-3 bg-white bg-opacity-75 w-auto'
@@ -52,6 +54,8 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                             <AdminAddProduct productArray={productArray} setProductArray={setProductArray} setProductPage={setProductPage}/>}
                         </div>
                     </div>
+
+                    {/* REVIEW WINDOW */}
                     <div className='col-xl-6'>
                         <div className='col-xl-6 border-top border-bottom border-4 border-black rounded p-3 m-3 bg-white bg-opacity-75 w-auto'>
                             <div className='d-flex justify-content-between align-items-center mb-2'>
@@ -71,6 +75,7 @@ function AdminPage({reviews, setReviews, productArray, setProductArray}) {
                             {reviewPage ? <AdminSeeReviews reviews={reviews} setReviews={setReviews}/> : <AdminAddReview reviewsArray={reviews} setReviews={setReviews} setReviewPage={setReviewPage}/>}
                         </div>
                     </div>
+                    
                 </div>
             </div>
         )

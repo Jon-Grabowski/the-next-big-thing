@@ -7,7 +7,7 @@ function AdminSeeProducts({productArray, setProductArray}) {
     })
 
     return (
-        <div className='accordion' id="productAccordion">
+        <div className='accordion border rounded border-light border-4' id="productAccordion">
             {productCards}
         </div>
     )
