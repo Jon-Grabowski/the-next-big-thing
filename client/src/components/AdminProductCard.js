@@ -26,7 +26,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
             }
         })
     }
-
+                                {/* TODO: Spec string not being added to initial values */}
     const initialValues = {
         name: name,
         price: price,
@@ -34,17 +34,21 @@ function AdminProductCard({product, setProductArray, productArray}) {
         image: image
     }
 
+    
+    for (const spec in specArray) {
+        const currSpec = `spec${spec+1}`
+        initialValues[currSpec] = specArray[spec]
+    }
+
     console.log(initialValues)
 
     const formik = useFormik({
-        initialValues,
+        initialValues: initialValues,
         onSubmit: (values) => {console.log(values)},
     })
 
     for (let i = 0; i < specLines; i++) {
         const currSpec = `spec${i+1}`
-        const specBody = specArray[i]
-        initialValues[currSpec] = specBody
         specInputs.push(
             <div className="mb-3 row m-0" key={currSpec}>
                     <div className="col">             
@@ -98,7 +102,6 @@ function AdminProductCard({product, setProductArray, productArray}) {
                 </div>
             </div>
 
-                            {/* TODO: CREATE EDIT PRODUCT MODAL */}
                                 {/* EDIT PRODUCT MODAL */}
 
             <div className="modal fade" id={`${id}editProductModal`} tabIndex="-1" aria-labelledby={`${id}editProductModalLabel`} aria-hidden="true">
