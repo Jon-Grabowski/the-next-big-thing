@@ -1,12 +1,17 @@
+import { useFormik } from "formik";
+import { useState } from "react";
 
 function AdminProductCard({product, setProductArray, productArray}) {
 
     const {id, name, price, description, image, specs} = product
-
     const specArray = specs.split('|');
     const specsList = specArray.map((spec) => {
         return <li key={specArray.indexOf(spec)} className='p-2'>{spec}</li>
     });
+
+    const [specLines, setSpecLines] = useState(specsList.length)
+    let specInputs = []
+
 
     function handleDelete() {
         fetch(`/products/${id}`, {
@@ -20,6 +25,40 @@ function AdminProductCard({product, setProductArray, productArray}) {
                 alert('ERROR!')
             }
         })
+    }
+
+    const initialValues = {
+        name: name,
+        price: price,
+        description: description,
+        image: image
+    }
+
+    console.log(initialValues)
+
+    const formik = useFormik({
+        initialValues,
+        onSubmit: (values) => {console.log(values)},
+    })
+
+    for (let i = 0; i < specLines; i++) {
+        const currSpec = `spec${i+1}`
+        const specBody = specArray[i]
+        initialValues[currSpec] = specBody
+        specInputs.push(
+            <div className="mb-3 row m-0" key={currSpec}>
+                    <div className="col">             
+                        <input
+                        className="form-control col-sm-6 shadow-sm border-black border-3" 
+                        type="text"
+                        name={currSpec}
+                        // placeholder={specArray[i]}
+                        value={formik.values.currSpec}
+                        onChange={formik.handleChange}
+                        required/>
+                    </div>
+        </div>
+        )
     }
 
     return (
@@ -61,6 +100,104 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
                             {/* TODO: CREATE EDIT PRODUCT MODAL */}
                                 {/* EDIT PRODUCT MODAL */}
+
+            <div className="modal fade" id={`${id}editProductModal`} tabIndex="-1" aria-labelledby={`${id}editProductModalLabel`} aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id={`${id}editProductModalLabel`}>{`Edit ${name}`}</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className='bg-white p-3'>
+                                <form id={`edit-product-form-${id}`} onSubmit={formik.handleSubmit}>
+
+                                                    {/* Name */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Name</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <input
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="name"
+                                            placeholder="Product Name"
+                                            value={formik.values.name}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+
+                                                    {/* Price*/}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Price</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <input
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="title"
+                                            placeholder="Price"
+                                            value={formik.values.price}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+
+                                                    {/* Description */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Prodcut Description</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <textarea
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="body"
+                                            placeholder="Description..."
+                                            rows='10'
+                                            cols="50"
+                                            value={formik.values.description}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+
+                                                    {/* Image */}
+                                    <div className="mb-0 row m-0">
+                                        <label className="col fs-5">Image Link</label>
+                                    </div>
+                                    <div className="mb-3 row m-0">
+                                        <div className="col">             
+                                            <input
+                                            className="form-control col-sm-6 shadow-sm border-black border-3" 
+                                            type="text"
+                                            name="image"
+                                            placeholder="Product Image Link"
+                                            value={formik.values.image}
+                                            onChange={formik.handleChange}
+                                            required/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                                                    {/* Specs */}
+
+                        {specInputs}
+
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" className="btn btn-primary" form={`edit-product-form-${id}`} data-bs-dismiss="modal">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+
 
                                 {/* DELELTE PRODUCT MODAL */}
 
