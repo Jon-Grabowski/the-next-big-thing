@@ -10,7 +10,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
     });
 
     const [specLines, setSpecLines] = useState(specsList.length)
-    let specInputs = []
+    const specInputs = []
 
 
     function handleDelete() {
@@ -26,7 +26,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
             }
         })
     }
-                                {/* TODO: Spec string not being added to initial values */}
+
     const initialValues = {
         name: name,
         price: price,
@@ -36,11 +36,9 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
     
     for (const spec in specArray) {
-        const currSpec = `spec${spec+1}`
-        initialValues[currSpec] = specArray[spec]
+        const currSpec = `spec${parseInt(spec)+1}`
+        initialValues[currSpec] = specArray[parseInt(spec)]
     }
-
-    console.log(initialValues)
 
     const formik = useFormik({
         initialValues: initialValues,
@@ -56,8 +54,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
                         className="form-control col-sm-6 shadow-sm border-black border-3" 
                         type="text"
                         name={currSpec}
-                        // placeholder={specArray[i]}
-                        value={formik.values.currSpec}
+                        value={formik.values[currSpec]}
                         onChange={formik.handleChange}
                         required/>
                     </div>
@@ -141,7 +138,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
                                             <input
                                             className="form-control col-sm-6 shadow-sm border-black border-3" 
                                             type="text"
-                                            name="title"
+                                            name="price"
                                             placeholder="Price"
                                             value={formik.values.price}
                                             onChange={formik.handleChange}
@@ -158,7 +155,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
                                             <textarea
                                             className="form-control col-sm-6 shadow-sm border-black border-3" 
                                             type="text"
-                                            name="body"
+                                            name="description"
                                             placeholder="Description..."
                                             rows='10'
                                             cols="50"
@@ -189,7 +186,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
                         </div>
 
                                                     {/* Specs */}
-
+                                            {/* TODO: Format Spec Inputs */}
                         {specInputs}
 
                         <div className="modal-footer">
