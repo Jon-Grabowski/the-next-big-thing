@@ -101,12 +101,12 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
                                 {/* EDIT PRODUCT MODAL */}
 
-            <div className="modal fade" id={`${id}editProductModal`} tabIndex="-1" aria-labelledby={`${id}editProductModalLabel`} aria-hidden="true">
-                <div className="modal-dialog">
+            <div className="modal fade modal-lg" id={`${id}editProductModal`} tabIndex="-1" aria-labelledby={`${id}editProductModalLabel`} aria-hidden="true">
+                <div className="modal-dialog modal-dialog-scrollable">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header bg-dark text-white">
                             <h1 className="modal-title fs-5" id={`${id}editProductModalLabel`}>{`Edit ${name}`}</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <div className='bg-white p-3'>
@@ -114,7 +114,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
                                                     {/* Name */}
                                     <div className="mb-0 row m-0">
-                                        <label className="col fs-5">Name</label>
+                                        <label className="col fs-5">Name:</label>
                                     </div>
                                     <div className="mb-3 row m-0">
                                         <div className="col">             
@@ -131,7 +131,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
                                                     {/* Price*/}
                                     <div className="mb-0 row m-0">
-                                        <label className="col fs-5">Price</label>
+                                        <label className="col fs-5">Price:</label>
                                     </div>
                                     <div className="mb-3 row m-0">
                                         <div className="col">             
@@ -148,7 +148,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
                                                     {/* Description */}
                                     <div className="mb-0 row m-0">
-                                        <label className="col fs-5">Prodcut Description</label>
+                                        <label className="col fs-5">Prodcut Description:</label>
                                     </div>
                                     <div className="mb-3 row m-0">
                                         <div className="col">             
@@ -167,7 +167,7 @@ function AdminProductCard({product, setProductArray, productArray}) {
 
                                                     {/* Image */}
                                     <div className="mb-0 row m-0">
-                                        <label className="col fs-5">Image Link</label>
+                                        <label className="col fs-5">Image Link:</label>
                                     </div>
                                     <div className="mb-3 row m-0">
                                         <div className="col">             
@@ -181,17 +181,22 @@ function AdminProductCard({product, setProductArray, productArray}) {
                                             required/>
                                         </div>
                                     </div>
+
+                                                                                        {/* Specs */}
+                                            {/* TODO: Format Spec Inputs */}
+                                    <div>
+                                        <h5 className='p-2'>Specs</h5>
+                                    </div>
+                                    {specInputs}
                                 </form>
                             </div>
                         </div>
 
-                                                    {/* Specs */}
-                                            {/* TODO: Format Spec Inputs */}
-                        {specInputs}
 
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" className="btn btn-primary" form={`edit-product-form-${id}`} data-bs-dismiss="modal">Save changes</button>
+
+                        <div className="modal-footer bg-dark">
+                            <button type='reset' className="btn btn-secondary border border-white" data-bs-dismiss="modal" onClick={formik.resetForm}>Cancel</button>
+                            <button type="submit" className="btn btn-primary border border-white" form={`edit-product-form-${id}`} data-bs-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>

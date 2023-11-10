@@ -80,9 +80,9 @@ function AdminReviewCard({currReview, setReviews, reviewsArray}) {
             <div className="modal fade" id={`${id}editReviewModal`} tabIndex="-1" aria-labelledby={`${id}editReviewModalLabel`} aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header bg-dark text-white">
                             <h1 className="modal-title fs-5" id={`${id}editReviewModalLabel`}>{`Edit ${name} Review`}</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <div className='bg-white p-3'>
@@ -160,9 +160,9 @@ function AdminReviewCard({currReview, setReviews, reviewsArray}) {
                                 </form>
                             </div>
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" className="btn btn-primary" form={`edit-review-form-${id}`} data-bs-dismiss="modal">Save changes</button>
+                        <div className="modal-footer bg-dark">
+                            <button type="button" className="btn btn-secondary border border-white" data-bs-dismiss="modal" onClick={formik.resetForm}>Cancel</button>
+                            <button type="submit" className="btn btn-primary border border-white" form={`edit-review-form-${id}`} data-bs-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
